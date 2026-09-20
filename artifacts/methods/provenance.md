@@ -2,8 +2,8 @@
 
 This audit records the implemented methods as of 20 September 2026. Matching
 a published numerical result does not establish that the historical algorithm
-has been reconstructed. The first iteration still owes the faithful algorithm
-reconstruction; independent modern computations provide additional evidence.
+has been reconstructed. Historical reconstruction and independent modern
+verification have separate evidence and status in the claim ledger.
 
 The codeword-graph CCZ backend and the code-group intersection for EA
 stabilizers were introduced during the supplied-table verification without
@@ -25,7 +25,7 @@ an audit of the maintained artifact, not a completed audit of every backup.
 | APN constraints and incremental difference-table recursion | Reconstruction of the thesis's APN criterion, incremental filtering and rollback. The Cython port and runtime dimension interface are modern engineering choices. |
 | Immutable plane-based search and unpruned derivative enumeration | Independent verification implementations using the historical mathematical definitions. Their copied state and brute-force traversal are not reconstructions of the optimized historical program. |
 | Affine refinement and nested alpha/beta canonicity search | Reconstruction of the thesis's recursive template method. The compiled implementation retains masked reusable buffers. This does not establish identical historical traversal, instruction order, or all original optimizations. |
-| Three-template alpha/beta/gamma EA equivalence | Readable reconstruction of the thesis's recursive equivalence method, used for the complete n=4 candidate reduction. Historical self-equivalence pruning is still pending. |
+| Three-template alpha/beta/gamma EA equivalence | Readable reconstruction of the thesis's recursive equivalence method, used for the complete n=4 candidate reduction. The separate historical stabilizer experiment now adds selected-generator orbit pruning. |
 | Gamma-eliminated EA backtracking for the full n=5 reduction | Documented adaptation of the same EA relation: affine interpolation eliminates gamma, alpha refinement forces beta, with Cython shared buffers. Degree and derivative-degree histograms skip impossible assignments; all 21 proposed representative pairs receive exact tests. The original three-template reference remains available. No CCZ or stabilizer signatures are used; see [method](ea-reduction.md). |
 | Full-input affine enumeration with greedy output minimization | Independent verification oracle in `affine_oracle.py`, used to check the recursive filter and n=4 survivors. It is not presented as the historical canonicity algorithm. |
 | APN singleton propagation, sparse templates and undo trail | Reconstruction requested by the author from his recollection of exclusion masks and forced later positions. Exact historical construction source remains missing. The current trail layout and processing order are implementation choices. |
@@ -33,9 +33,13 @@ an audit of the maintained artifact, not a completed audit of every backup.
 | Binary-code representation for CCZ | Historical route used with Magma, following Dillon. The modern artifact uses the smaller row code instead of the recovered code's dual representation; duality preserves permutation equivalence and both witness conventions are checked. |
 | Spanning-codeword incidence graph and Bliss canonicalization | Modern replacement backend, not the thesis's direct graph search and not a reproduction of the historical Magma backend. The exact reduction is documented in `ccz-stabilizers.md`. This is the maintained CCZ decision procedure. |
 | Full code automorphism groups computed by Miller and Bliss | Modern independent group computations whose resulting coordinate groups are compared. Miller's group computation does not make the final CCZ decisions a Miller pairwise equivalence computation. |
-| EA stabilizer as Aut(C_s) intersect AGL(n,2) | Modern method with an explicit full-rank lemma and literature basis. It replaces neither the obligation to reconstruct article Algorithm 3 nor the obligation to check its canonical generator sequence. |
-| EA orbit sizes from action-group order divided by stabilizer order | Same mathematical calculation as article §6; the current stabilizer orders feeding it come from the modern intersection method. |
+| EA stabilizer as Aut(C_s) intersect AGL(n,2) | Modern method with an explicit full-rank lemma and literature basis. It is independent of the now-completed Algorithm 3 reconstruction and its canonical generator sequence. |
+| Algorithm 3 and Note 9 recursive generator search | Reconstructed from the article, surviving related three-template C code and author clarifications. Filters use only known generators fixing earlier positions. The exact printed three generators are rediscovered; all nine groups agree with the modern method. Incumbent alpha bounds and optional forced-equation propagation are documented implementation choices, not recovered original loop layouts. The readable basic schedule remains available; see [method](historical-stabilizers.md). |
+| EA orbit sizes from action-group order divided by stabilizer order | Same mathematical calculation as article §6; orders are now independently supplied by both the modern intersection and recursive generator methods. |
 | Invariants and pairwise EA inequivalence of the seven supplied n=5 functions | Using invariants to reject equivalence is historical, as the author confirms. The current check uses the distinct tuples (computed CCZ class, algebraic degree, computed EA stabilizer order). Using stabilizer order at this stage is an addition: the author established canonicity before calculating stabilizers. The CCZ and stabilizer backends are also modern additions. This supplied-table check does not establish canonicity, reduce the full search output, or establish exhaustive n=5 coverage. |
+| Power functions and trace-family correspondences | New verification driver using Sage field arithmetic and the existing normalized EA search. Independent binary polynomial arithmetic rebuilds all source tables and replays the certificates. It checks the published mathematical identifications, not a recovered historical finite-field program; see [method](power-correspondences.md). |
+| Dimension-five affine APN permutation classification via complete EA coverage | Reapplication of the linear-addition technique the author recalls using in 2019, distinct from his direct permutation search in 2006/2007 (clarification of 20 September 2026): exhaust linear corrections of the seven EA representatives, check all 67 corrected permutations against five exact affine minima, and retain explicit witnesses. The separate direct permutation-tree search is ongoing, not completion evidence; see [method](apn-permutations-five.md). |
+| All-functions catalogue through dimension four (2019 paper) | Independent full-affine-input enumeration and greedy output normalization verify all global EA minima and count stabilizers, including their output kernels in rank-deficient cases. Distinct minima and the exact orbit sum prove coverage. Linear-correction search checks permutation flags, following the approach evidenced by the saved 194 witnesses and recalled by the author as dating to 2019. The documented modern code/Bliss backend checks CCZ. The original Magma sources and matching archived output are preserved separately; see [method](ea-ccz-catalogue-2019.md). |
 | APN, degree, Walsh and witness checks; small exhaustive oracles | Independent verification suite. Direct/fast transform comparisons, affine-span checks in tiny dimensions, explicit matrix lifts, hashes and run records are verification machinery, not claims about historical implementation. |
 
 The currently unresolved 15-versus-16 n=4 candidate count is a concrete limit
@@ -115,10 +119,11 @@ See [the detailed method and lemma](ccz-stabilizers.md),
 [implementation](../lib/code_classification.py), and
 [completed supplied-table record](../results/ccz-stabilizers.json).
 
-## Historical obligations still open
+## Reconstruction status and remaining recovery gaps
 
-- Reconstruct article Algorithm 3's recursive canonical-generator search
-  (EA-GROUP-001), including the induced subgroup pruning (GROUP-001).
+- Algorithm 3 and its induced subgroup pruning are now reconstructed under
+  EA-GROUP-001 and GROUP-001. The original complete driver remains unlocated;
+  reconstruction does not resolve that recovery gap.
 - Resolve historical intermediate counts and configurations where possible,
   keeping missing evidence and author recollections explicit.
 
@@ -131,4 +136,6 @@ documentation audit.
 
 The subsequent [completed candidate reduction](ea-reduction.md) supplies the
 EA-002 coverage missing from the earlier supplied-table checks. Their original
-records retain their narrower scope. Historical Algorithm 3 remains open.
+records retain their narrower scope. The subsequent
+[historical stabilizer reconstruction](historical-stabilizers.md) now closes
+the Algorithm 3 and Note 9 obligations with separate search and replay records.

@@ -1,0 +1,144 @@
+clear;
+
+//in this file there are some function to convert a Truth Table to a Polynomial to a (magma) mapping
+load "convertFkt.mgm";
+
+//read the data
+load "dim-2-ea.mgm";
+
+
+//compute the Gamma Rank given a mapping f: L-> L where L=GF(2^n)
+gammaRank:=function(f,L,n)
+	V2:=VectorSpace(GF(2),2*n);
+	G:={ V2!(Eltseq(x) cat Eltseq(f(x))) : x in L };
+	M:=KMatrixSpace(GF(2),2^(2*n),2^(2*n))!0;
+	for x in V2 do
+		for g in G do
+			y:=x+g;
+			//if ((x+y) in G) then
+			M[binInv(x,2*n)+1][binInv(y,2*n)+1]:=1;
+		//end if;
+		end for;
+	end for;
+	return Rank(M);	
+end function;	
+
+
+//Given a mapping f over the field L (where the dimension is n)
+//this function is going to create the extended codes as explained in Dillon's slides	
+generateExtendedCodeold:=function(f,n,L)
+	w:=PrimitiveElement(L);
+	Ms:=KMatrixSpace(GF(2),2^n-1,2*n);
+	Ms2:=KMatrixSpace(GF(2),2*n+1,2^n);
+	V2n:=VectorSpace(GF(2),2*n);
+	Vbig:=VectorSpace(GF(2),2^n);
+
+	M:=Ms!0;
+	i:=1;
+	for j in [0..2^n-2] do
+		M[i]:=V2n!( Eltseq(w^j) cat Eltseq(f(w^j)));
+		i:=i+1;
+	end for;
+
+	M2:=Ms2!0;
+	M2[1]:=Vbig![ 1 : i in [1..2^n]];
+	for i in [1..2*n] do
+	M2[i+1]:=Vbig!([0] cat Eltseq(Transpose(M)[i]));
+	end for;
+	Cd:=LinearCode(M2);
+	C:=Dual(Cd);
+	return C;
+end function;
+
+generateExtendedCode:=function(f,n,L)
+    V:=VectorSpace(GF(2),2*n+1);
+    Ms:=KMatrixSpace(GF(2),2^n,2*n+1);
+    i:=1;
+    H:=Ms!0;
+    for x in L do
+        a:=[1] cat Eltseq(x) cat Eltseq(f(x));
+        H[i]:=V!a;
+        i:=i+1;
+    end for;
+    B:=Dual(LinearCode(Transpose(H)));   
+    return B;
+end function;
+
+//______________________MAIN PART___________________
+
+//this is the dimension
+"n=",n;
+L<u>:=GF(2^n);
+
+//the set of functions defined in dillon's slides.
+DILLONZOO:=[
+	map< L-> L | x :-> x^3 >,
+	map< L-> L | x :-> x^3 +u^11*x^6 +u*x^9 >,
+	map< L-> L | x :-> u*x^5 +x^9 +u^4*x^17 +u*x^18+u^4*x^20 +u*x^24 +u^4*x^34 +u*x^40 >,
+	map< L-> L | x :-> u^7*x^3 +x^5 +u^3*x^9 +u^4*x^10 +x^17 + u^6*x^18 >,
+	map< L-> L | x :-> x^3 +u*x^24 +x^10 >,
+	map< L-> L | x :-> x^3 +u^17*(x^17 +x^18 +x^20 + x^24) >,
+	map< L-> L | x :-> x^3 +u^11*x^5 +u^13*x^9+x^17 + u^11*x^33 +x^48 >,
+	map< L-> L | x :-> u^25*x^5 +x^9 +u^38*x^12+u^25*x^18 +u^25*x^36 >,
+	map< L-> L | x :-> u^40*x^5 +u^10*x^6 + u^62*x^20 +u^35*x^33+u^15*x^34 +u^29*x^48 >,
+	map< L-> L | x :-> u^34*x^6 +u^52*x^9 + u^48*x^12 +u^6*x^20+u^9*x^33 +u^23*x^34 +u^25*x^40 >,
+	map< L-> L | x :-> x^9 +u^4*(x^10 +x^18)+u^9*(x^12 +x^20 +x^40) >,
+	map< L-> L | x :-> u^52*x^3 +u^47*x^5 + u*x^6 +u^9*x^9 + u^44*x^12+u^47*x^33 +u^10*x^34 +u^33*x^40 >,
+	map< L-> L | x :-> u*(x^6 +x^10 +x^24 +x^33)+x^9 + u^4*x^17>
+];	
+
+//take the two functions in the data file
+// f1:=convertTT2Fkt(EXAMPLES[1],L);
+// f2:=convertTT2Fkt(EXAMPLES[2],L);
+// f1:=DILLONZOO[1];
+// f2:=DILLONZOO[2];
+
+FUNCTIONS := [];
+CODES := [];
+GAMMA := [];
+AUT := [];
+
+"Converting to codes...";
+
+for c in [1..#CANDIDATES] do
+  FUNCTIONS[c] := convertTT2Fkt (CANDIDATES[c], L);
+  "Number ", c;
+  CODES[c] := generateExtendedCode(FUNCTIONS[c], n, L);
+//  GAMMA[c] := gammaRank(FUNCTIONS[c], L, n);
+//  "Gamma = ", GAMMA[c];
+//  AUT[c] := AutomorphismGroup (CODES[c]);
+//  "Aut = ", AUT[c];
+end for;
+
+"Conversion done.";
+
+CANONICALS := [];
+EQUIVALENT := [];
+
+for i in [1..#FUNCTIONS] do
+  "Testing code ", i;
+  canonical := true;
+  for j in [1..#CANONICALS] do
+    "  against ", j;
+    if (IsEquivalent (CODES[i], CODES[CANONICALS[j]])) then
+      EQUIVALENT[i] := CANONICALS[j];
+      "Equivalent to ", EQUIVALENT[i];
+      canonical := false;
+      break;
+    end if;
+  end for;
+  if (canonical) then
+    Append (~CANONICALS, i);
+    EQUIVALENT[i] := i;
+    "Canonical";
+  end if;
+end for;
+
+
+//and call magmas function for code equivalence. This gives true or false. In the case where the codes are equivalent it returns the permutation of the columns.
+// IsEquivalent(C,C2);
+
+"Canonicals:";
+CANONICALS;
+"Equivalences:";
+EQUIVALENT;

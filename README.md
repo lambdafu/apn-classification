@@ -20,6 +20,10 @@ outstanding.
   [Publisher reference, DOI: 10.1007/s10623-008-9194-6](https://doi.org/10.1007/s10623-008-9194-6).
   The Springer article is referenced here; its PDF is not included in this
   repository, in accordance with the author's copyright restriction.
+- Marcus Brinkmann, *Extended Affine and CCZ Equivalence up to Dimension 4*,
+  [ePrint 2019/316](https://eprint.iacr.org/2019/316).
+  [Original sources and data](https://github.com/lambdafu/ext-affine-and-ccz-classes-up-to-dim-4);
+  [independent catalogue reproduction](artifacts/methods/ea-ccz-catalogue-2019.md).
 
 ## Reproduce and verify
 
@@ -29,8 +33,14 @@ SageMath and a C compiler are required for compiled experiments. From
 ```sh
 make reproduce             # Small-dimensional exhaustive baseline
 make canonicity            # Dimension-four affine and EA classification
+make permutations5-from-ea # Five n=5 affine APN permutation classes using complete EA coverage
+make verify-permutations5  # Replay permutation, power and inverse witnesses
 make reduce5 WORKERS=8      # Reduce the saved 11,768 dimension-five candidates
 make verify-reduction5     # Replay all saved dimension-five EA witnesses
+make historical-stabilizers # Algorithm 3 and Note 9, n=4,5
+make verify-historical-stabilizers # Replay generator witnesses and orbit totals
+make catalogue2019         # All EA/CCZ classes through n=4, including non-APN functions
+make verify-catalogue2019   # Replay witnesses and compare the archived Magma output
 ```
 
 The full dimension-five search need not be repeated to check the saved
@@ -44,6 +54,14 @@ See [the reduction method](artifacts/methods/ea-reduction.md) for the exact
 algorithm, certificates, finite checks and reproduction commands. This is an
 in-progress reconstruction, not a claim that every result or historical
 algorithm in the publications has already been reproduced.
+
+For Algorithm 3 and Note 9, start with the
+[historical stabilizer walkthrough](artifacts/methods/historical-stabilizers.md).
+The recursive reconstruction discovers the three printed generators from
+scratch, reproduces all nine n=4,5 stabilizers, and retains explicit witnesses.
+The walkthrough includes a short command for just the Note 9 example. Related
+original C fragments survive, but the complete original generator driver has
+not been located; the maintained implementation is a documented reconstruction.
 
 ## Repository contents
 

@@ -1,0 +1,25 @@
+{
+  "artifact": "power-correspondences-certificate-replay",
+  "completed": true,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.12.11",
+    "system": "Darwin"
+  },
+  "finished_utc": "2026-09-20T19:37:58.502149+00:00",
+  "record_sha256": "9a3839ac00006158830cb2a1b47add6f6ac04534f41556ed4ecd1fb2e80c7861",
+  "source_sha256": {
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/ea_equivalence.py": "7dcf7218aa385786d442c22c6424497f7f4cf2aab1cbae80b064bd848eca0624",
+    "lib/field_functions.py": "23c1568ebcca38645bf405bc060ac100415940ad5c7f4b7ae4992d882c0883bb",
+    "sage/power_correspondences.sage": "4c12b1cc32160e559bff1884a2cfdc8ae70a1548d6226002055d1183c35fec9e"
+  },
+  "verification": {
+    "all_positive_exponents_exhausted": true,
+    "checked_witnesses": 32,
+    "negative_EA_tests_reexecuted": false,
+    "note": "Nonpower conclusions additionally use the separately recorded pairwise EA inequivalence.",
+    "source_tables_rebuilt": true
+  }
+}

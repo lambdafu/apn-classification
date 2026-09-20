@@ -48,7 +48,8 @@ functions, and stabilizers of points in the same group orbit are conjugate.
 Consequently the seven supplied representatives are pairwise EA inequivalent.
 This argument uses the computed full stabilizers, not the published orders
 as an assumption. It does not establish lexicographic minimality among all
-functions or cover the remaining construction candidates.
+functions or cover the construction candidates by itself; the completed
+[EA reduction](ea-reduction.md) supplies those separate obligations.
 
 ## The code and the CCZ reduction
 
@@ -246,8 +247,10 @@ computes the exact intersection and its order.
 
 This is a **modern independent computation** of the published stabilizers.
 It does not reconstruct article Algorithm 3's iterative lexicographically
-canonical generator search. That historical algorithm remains a separate
-reconstruction obligation; these generators need not match its ordered list.
+canonical generator search. That algorithm is now
+[reconstructed separately](historical-stabilizers.md); the modern group
+generators need not match its canonical ordered list. The two experiments
+verify equality of the resulting groups, not just their orders.
 The code automorphism group is an affine graph stabilizer here because of full
 graph span, and is generally larger than the EA stabilizer, as the table shows.
 
@@ -274,8 +277,9 @@ The factors count alpha, beta, and gamma respectively. Each orbit has size
 - n=4: **18,940,805,775,360**. Together with the independently completed
   dimension-four classification, this reproduces the total.
 - n=5: **110,823,678,910,407,691,468,800**. This reproduces the published sum
-  for these seven pairwise inequivalent EA orbits. The claim that it counts
-  *all* APN functions remains conditional on the pending exhaustive EA reduction.
+  for these seven pairwise inequivalent EA orbits. The completed exhaustive
+  [EA reduction](ea-reduction.md) establishes that they cover *all* APN
+  functions, so the combination reproduces the total.
 
 ## Independent checks and backend observations
 

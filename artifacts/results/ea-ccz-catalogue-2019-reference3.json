@@ -1,0 +1,408 @@
+{
+  "artifact": "ea-ccz-catalogue-2019",
+  "build": null,
+  "checks": [],
+  "completed": true,
+  "configuration": {
+    "max_dimension": 3,
+    "method": "full affine-input enumeration, greedy linear output minimization; CCZ via Bliss",
+    "reference": true
+  },
+  "dimensions": [
+    {
+      "all_functions": 4,
+      "bijective_classes": 1,
+      "ccz_classes": 1,
+      "ccz_representative_rows": [
+        1
+      ],
+      "dimension": 1,
+      "distinct_orbit_sizes": 1,
+      "distinct_walsh_spectra": 1,
+      "ea_classes": 1,
+      "orbit_sum": 4,
+      "rows": [
+        {
+          "action_order": 8,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 1,
+          "ccz_witness": null,
+          "degree": 1,
+          "image_rank": 0,
+          "input_stabilizer": 2,
+          "orbit_size": 4,
+          "output_kernel_order": 1,
+          "permutation_correction": [
+            0,
+            1
+          ],
+          "row": 1,
+          "stabilizer_order": 2,
+          "walsh": [
+            1,
+            0,
+            1
+          ]
+        }
+      ],
+      "seconds": 0.0992530419898685
+    },
+    {
+      "all_functions": 256,
+      "bijective_classes": 1,
+      "ccz_classes": 2,
+      "ccz_representative_rows": [
+        1,
+        2
+      ],
+      "dimension": 2,
+      "distinct_orbit_sizes": 2,
+      "distinct_walsh_spectra": 2,
+      "ea_classes": 2,
+      "orbit_sum": 256,
+      "rows": [
+        {
+          "action_order": 9216,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 1,
+          "ccz_witness": null,
+          "degree": 1,
+          "image_rank": 0,
+          "input_stabilizer": 24,
+          "orbit_size": 64,
+          "output_kernel_order": 6,
+          "permutation_correction": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "row": 1,
+          "stabilizer_order": 144,
+          "walsh": [
+            9,
+            0,
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "action_order": 9216,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 2,
+          "ccz_witness": null,
+          "degree": 2,
+          "image_rank": 1,
+          "input_stabilizer": 24,
+          "orbit_size": 192,
+          "output_kernel_order": 2,
+          "permutation_correction": null,
+          "row": 2,
+          "stabilizer_order": 48,
+          "walsh": [
+            3,
+            0,
+            8,
+            0,
+            1
+          ]
+        }
+      ],
+      "seconds": 0.0016358749999199063
+    },
+    {
+      "all_functions": 16777216,
+      "bijective_classes": 4,
+      "ccz_classes": 7,
+      "ccz_representative_rows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "dimension": 3,
+      "distinct_orbit_sizes": 7,
+      "distinct_walsh_spectra": 7,
+      "ea_classes": 7,
+      "orbit_sum": 16777216,
+      "rows": [
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 1,
+          "ccz_witness": null,
+          "degree": 1,
+          "image_rank": 0,
+          "input_stabilizer": 1344,
+          "orbit_size": 4096,
+          "output_kernel_order": 168,
+          "permutation_correction": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "row": 1,
+          "stabilizer_order": 225792,
+          "walsh": [
+            49,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 2,
+          "ccz_witness": null,
+          "degree": 3,
+          "image_rank": 1,
+          "input_stabilizer": 168,
+          "orbit_size": 229376,
+          "output_kernel_order": 24,
+          "permutation_correction": null,
+          "row": 2,
+          "stabilizer_order": 4032,
+          "walsh": [
+            21,
+            0,
+            28,
+            0,
+            0,
+            0,
+            4,
+            0,
+            3
+          ]
+        },
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 3,
+          "ccz_witness": null,
+          "degree": 2,
+          "image_rank": 1,
+          "input_stabilizer": 192,
+          "orbit_size": 200704,
+          "output_kernel_order": 24,
+          "permutation_correction": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "row": 3,
+          "stabilizer_order": 4608,
+          "walsh": [
+            37,
+            0,
+            0,
+            0,
+            16,
+            0,
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 4,
+          "ccz_witness": null,
+          "degree": 3,
+          "image_rank": 2,
+          "input_stabilizer": 48,
+          "orbit_size": 4816896,
+          "output_kernel_order": 4,
+          "permutation_correction": null,
+          "row": 4,
+          "stabilizer_order": 192,
+          "walsh": [
+            15,
+            0,
+            28,
+            0,
+            8,
+            0,
+            4,
+            0,
+            1
+          ]
+        },
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 5,
+          "ccz_witness": null,
+          "degree": 2,
+          "image_rank": 2,
+          "input_stabilizer": 192,
+          "orbit_size": 1204224,
+          "output_kernel_order": 4,
+          "permutation_correction": [
+            0,
+            2,
+            3,
+            1,
+            4,
+            6,
+            7,
+            5
+          ],
+          "row": 5,
+          "stabilizer_order": 768,
+          "walsh": [
+            31,
+            0,
+            0,
+            0,
+            24,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 6,
+          "ccz_witness": null,
+          "degree": 3,
+          "image_rank": 3,
+          "input_stabilizer": 96,
+          "orbit_size": 9633792,
+          "output_kernel_order": 1,
+          "permutation_correction": null,
+          "row": 6,
+          "stabilizer_order": 96,
+          "walsh": [
+            12,
+            0,
+            28,
+            0,
+            12,
+            0,
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "action_order": 924844032,
+          "canonical": true,
+          "ccz_permutation": null,
+          "ccz_row": 7,
+          "ccz_witness": null,
+          "degree": 2,
+          "image_rank": 3,
+          "input_stabilizer": 1344,
+          "orbit_size": 688128,
+          "output_kernel_order": 1,
+          "permutation_correction": [
+            0,
+            4,
+            6,
+            2,
+            7,
+            3,
+            1,
+            5
+          ],
+          "row": 7,
+          "stabilizer_order": 1344,
+          "walsh": [
+            28,
+            0,
+            0,
+            0,
+            28,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "seconds": 0.039767791982740164
+    }
+  ],
+  "elapsed_seconds": 0.15797458300949074,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.12.5",
+    "sage": "10.6",
+    "system": "Darwin"
+  },
+  "finished_utc": "2026-09-20T21:13:25.244793+00:00",
+  "input_provenance": {
+    "commit": "b44f031ed121ab198354010b07c924e8504bca6f",
+    "import_note": "Tables transcribed from TeX and cross-checked against raw data; b=0 removed from raw Walsh spectra.",
+    "paper": "https://eprint.iacr.org/2019/316",
+    "repository": "https://github.com/lambdafu/ext-affine-and-ccz-classes-up-to-dim-4",
+    "sha256": {
+      "020-dim-1.tex": "3d2d2f573532b8591022b9c9a93bbefc8374e330d1d8c63997a1419e416ebc30",
+      "030-dim-2.tex": "3986fca9ca972f0a8c9c90e0a76d2e210b6b2ca5ac238448123ecf2c44b34ee0",
+      "040-dim-3.tex": "c1b5365af48c5fe339441dd5e786d6d35e04664bee67d76b619cfc0b3299d907",
+      "051-dim-4-data.tex": "e5cf1131f3b24c4e0cf9ec92b9f419e605b9e9cad76074a25ded43e14ffbcfaa",
+      "052-dim-4-walsh.tex": "288543f8cdd394e9f7e55f90977df400ef957c9e66fb08c7be7ccbde64723f14",
+      "data/CCZ-1.txt": "3f03d9ce2216c3f7f096e69e612199a29fcc9409e1e0a14e8c3861d6d673807b",
+      "data/CCZ-2.txt": "ccd20bf4a7840383400bb5abbfb8c47734cba25e8d54a7b8526454dc786bb25b",
+      "data/CCZ-3.txt": "5428714331d5c3c5ac29d126b685137b2f0e263a0f2f0c0b2d82341fa0e1f03d",
+      "data/CCZ-4.txt": "ca85a7ba90997d51c376742c7c87e8be04f8f78bbc2d2c329b120796e362c3e6",
+      "data/EA-1.txt": "3f03d9ce2216c3f7f096e69e612199a29fcc9409e1e0a14e8c3861d6d673807b",
+      "data/EA-2.txt": "ccd20bf4a7840383400bb5abbfb8c47734cba25e8d54a7b8526454dc786bb25b",
+      "data/EA-3.txt": "5428714331d5c3c5ac29d126b685137b2f0e263a0f2f0c0b2d82341fa0e1f03d",
+      "data/EA-4-bijective-summary.txt": "9dc37b070c44ce384f792427314cb74d70a9eb380f22fb3c85c1c44d1c14fa0b",
+      "data/EA-4-degree.txt": "8753eafdfd1f877f818a18350a9f5741f2f161ded6144dbe7d2ee952a45e3b8a",
+      "data/EA-4-sizes.txt": "681f52be14fc45924185ef6718fb3019ba3e747ae0cd2647ec06a3fd45329ec8",
+      "data/EA-4-walsh.txt": "0fa85d734cbdd98f5e8e39b8cfb3695d3fd34a9fe4ee51ffab402c9dcd985fa3",
+      "data/EA-4.txt": "0ca72485eb6f6c874285b0fb55ecfd284c2557bb81c60071ce82aa49ad1b8315",
+      "data/ea-to-ccz-4.txt": "982cdd6f8cfda4020069647608f7186f0f0384fa1c4a15ac23f9b7db612bf58c"
+    },
+    "title": "Extended Affine and CCZ Equivalence up to Dimension 4"
+  },
+  "schema": 1,
+  "source_sha256": {
+    "cython/ea_catalogue.pyx": "8af164f6cd69babff52f849ddfd37455998449df34b12b647d3ad9522836c87a",
+    "data/ea-ccz-2019.json": "c4fd7ca8a7cad3c036fbef5795883f2af8f5aa0315031e910801284b8dfda7de",
+    "lib/affine_oracle.py": "32c632c1bcef166445cdb302315ea8259b8bc0bb924558b11b7e9fe0cb130070",
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/code_classification.py": "4f76da912cbcea3d98e7c1018f16d07f39d854c6544088a6edf50221a756ee2c",
+    "lib/compiled.py": "22f2cf5a0c55a2b1ef1b573d9d30058116739894028a6e4c1b6afccd16bb9f58",
+    "lib/ea_catalogue.py": "32c26a3ffb5fa56237ad8b9a0493059ffffacb47d615cfc563650654f79f8fdb",
+    "lib/ea_equivalence.py": "7dcf7218aa385786d442c22c6424497f7f4cf2aab1cbae80b064bd848eca0624",
+    "lib/walsh.py": "8ff457a2999ed650486978f10761171ba63d3ec549820d698e9bb57e16b2e720",
+    "sage/ea_ccz_catalogue.sage": "2e412a74f81d37f6a66b9eb1ad6126dad181b0eaf2f890508f560ff470beab1d",
+    "sage/import_ea_ccz_2019.py": "fd07057baf9c309daff5c1a3ed6e027ad9f7fb451efd9b28e3ee75369a31f3a8"
+  }
+}

@@ -1,0 +1,1 @@
+./apn-4  --no-apn --ext-affine   --count 1 | tee EA-16.txt

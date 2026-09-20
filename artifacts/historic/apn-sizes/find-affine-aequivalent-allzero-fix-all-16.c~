@@ -1,0 +1,867 @@
+/* Include this file.  */
+
+// Find all equivalent functions with unique alpha (beta is easy to
+// determine).
+
+/* XXX TODO: The algorithm doesn't terminate quickly for IDENTITY.  Why?  */
+
+#define N 4
+#include "galois.c"
+#include "bitmask.h"
+
+gf2n_t sbox[TWO_POW_N];
+gf2n_t tbox[TWO_POW_N];
+
+unsigned long long count;
+#define COUNT 1000000
+
+/* Lists all the double cosets.  Aequivalent to number of invertible
+   boolean functions, sloane's A001537, paper from 1964.  Also see Hou. */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+
+/* Set this to the length of the sbox template before invoking
+   dc_recurse.  */
+int sbox_defined;
+
+/* These are output parameters.  */
+gf2n_t a[TWO_POW_N];
+gf2n_t binv[TWO_POW_N];
+gf2n_t c[TWO_POW_N];
+
+gf2n_t cuma[TWO_POW_N];
+gf2n_t cumbinv[TWO_POW_N];
+gf2n_t cumc[TWO_POW_N];
+
+#define OUTPUT 1
+
+#if OUTPUT
+
+static bool
+mask_full (MASK_PROTO (mask))
+{
+  int i;
+
+  for (i = 0; i < TWO_POW_N; i++)
+    if (! MASK_TEST (mask, i))
+      return false;
+  return true;
+}
+
+
+bool
+report_success (unsigned int depth, MASK_PROTO (a_mask),
+		MASK_PROTO (a_img_mask), MASK_PROTO (binv_mask),
+		MASK_PROTO (binv_img_mask), MASK_PROTO (c_mask))
+{
+  int i;
+  gf2n_t tbox_alt[TWO_POW_N];
+  MASK_DECL (aperm);
+  MASK_DECL (bperm);
+  static int counter = 0;
+
+  return true;
+
+  MASK_RESET (aperm);
+  MASK_RESET (bperm);
+
+#if 1
+  while (! mask_full (MASK_INV (a_mask)))
+    {
+      gf2n_t adepth;
+
+      for (depth = 0; depth < TWO_POW_N; depth++)
+	if (!MASK_TEST (a_mask, depth))
+	  break;
+      for (adepth = 0; adepth < TWO_POW_N; adepth++)
+	if (!MASK_TEST (a_img_mask, adepth))
+	  break;
+
+      a[depth] = adepth;
+      MASK_SET (a_mask, depth);
+      MASK_SET (a_img_mask, adepth);
+
+      for (i = 1; i < TWO_POW_N; i++)
+	{
+	  if (MASK_TEST (a_mask, i))
+	    {
+	      unsigned int nidx;
+	      unsigned int nimg;
+
+	      /* At this point, we know that a[0] is already defined!
+		 Because we have _some_ values set, and a[0] is the
+		 first one to be defined.  */
+	      nidx = galois_add (depth, i);
+	      nimg = galois_add (a[0], galois_add (adepth, a[i]));
+	      a[nidx] = nimg;
+	      MASK_SET (a_mask, nidx);
+	      MASK_SET (a_img_mask, nimg);
+	    }
+	}
+    }
+
+  while (! mask_full (MASK_INV (binv_mask)))
+    {
+      gf2n_t bidx;
+      gf2n_t idx;
+
+      for (idx = 0; idx < TWO_POW_N; idx++)
+	if (!MASK_TEST (binv_mask, idx))
+	  break;
+      for (bidx = 0; bidx < TWO_POW_N; bidx++)
+	if (!MASK_TEST (binv_img_mask, bidx))
+	  break;
+
+      binv[idx] = bidx;
+      MASK_SET (binv_mask, idx);
+      MASK_SET (binv_img_mask, bidx);
+
+      /* binv[0] is not necessarily defined.  Thus, we take the first
+	 value we can get.  The others follow then by the equation:
+	 binv[x + y + c] = binv[x] + binv[y] + binv[c].  */
+      for (i = 0; i < TWO_POW_N; i++)
+	if (MASK_TEST (binv_mask, i))
+	  break;
+      if (i != TWO_POW_N)
+	{
+	  gf2n_t c = i++;
+	  gf2n_t binvc = binv[c];
+
+	  while (i < TWO_POW_N)
+	    {
+	      unsigned int nidx = galois_add (c, galois_add (idx, i));
+	      unsigned int nimg;
+
+	      if (MASK_TEST (binv_mask, i))
+		{
+		  nimg = galois_add (binvc, galois_add (bidx, binv[i]));
+		  binv[nidx] = nimg;
+		  MASK_SET (binv_mask, nidx);
+		  MASK_SET (binv_img_mask, nimg);
+		}
+	      i++;
+	    }
+	}
+    }
+
+  while (! mask_full (MASK_INV (c_mask)))
+    {
+      for (depth = 0; depth < TWO_POW_N; depth++)
+	if (!MASK_TEST (c_mask, depth))
+	  break;
+
+      c[depth] = 0;
+      MASK_SET (c_mask, depth);
+
+      for (i = 1; i < TWO_POW_N; i++)
+	{
+	  if (MASK_TEST (c_mask, i))
+	    {
+	      unsigned int nidx;
+	      unsigned int nimg;
+
+	      /* At this point, we know that c[0] is already defined!  */
+	      nidx = galois_add (depth, i);
+	      nimg = galois_add (c[0], galois_add (0, c[i]));
+	      c[nidx] = nimg;
+	      MASK_SET (c_mask, nidx);
+	    }
+	}
+    }
+#endif
+
+  for (i = 0; i < TWO_POW_N; i++)
+    {
+      int j;
+
+      if (MASK_TEST (aperm, i))
+	continue;
+      MASK_SET (aperm, i);
+      printf ("(%i", i);
+      j = a[i];
+      while (j != i)
+	{
+	  MASK_SET (aperm, j);
+	  printf (" %i", j);
+	  j = a[j];
+	}
+      printf (")");
+    }
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    {
+      int j;
+
+      if (MASK_TEST (bperm, i))
+	continue;
+      MASK_SET (bperm, i);
+      printf ("(%i", i);
+      j = binv[i];
+      while (j != i)
+	{
+	  MASK_SET (bperm, j);
+	  printf (" %i", j);
+	  j = binv[j];
+	}
+      printf (")");
+    }
+  printf ("\n");
+
+#if 1
+  printf ("Found affine aequivalent, lexically smaller one:\n");
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (a_mask, i))
+      printf ("%2i ", a[i]);
+    else
+      printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < sbox_defined; i++)
+    printf ("%2i ", sbox[i]);
+  while (i++ < TWO_POW_N)
+    printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (binv_mask, i))
+      printf ("%2i ", binv[i]);
+    else
+      printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (c_mask, i))
+      printf ("%2i ", c[i]);
+    else
+      printf ("__ ");
+  printf ("\n");
+
+#endif
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (a_mask, i) && a[i] < sbox_defined
+	&& MASK_TEST (binv_mask, sbox[a[i]]))
+      {
+	printf ("%2i ", galois_add (binv[sbox[a[i]]], c[i]));
+	tbox_alt[i] = galois_add (binv[sbox[a[i]]], c[i]);
+      }
+    else
+      printf ("__ ");
+  printf ("\n");
+
+  //  for (i = 0; i < TWO_POW_N; i++)
+  //    sbox[i] = tbox[i];
+
+  {
+    gf2n_t new_cuma[TWO_POW_N];
+    gf2n_t new_cumbinv[TWO_POW_N];
+    gf2n_t new_cumc[TWO_POW_N];
+
+  for (i = 0; i < TWO_POW_N; i++)
+    {
+      new_cuma[i] = cuma[a[i]];
+      new_cumbinv[i] = binv[cumbinv[i]];
+      new_cumc[i] = galois_add (binv[cumc[a[i]]], c[i]);
+    }
+  memcpy (cuma, new_cuma, sizeof (cuma));
+  memcpy (cumbinv, new_cumbinv, sizeof (cumbinv));
+  memcpy (cumc, new_cumc, sizeof (cumc));
+  }
+
+  //  if (!--counter)
+  //    exit (0);
+  printf ("COUNTER: %i\n", ++counter);
+
+  return true;
+}
+
+
+bool
+report (unsigned int depth, MASK_PROTO (a_mask),
+	MASK_PROTO (a_img_mask), MASK_PROTO (binv_mask),
+	MASK_PROTO (binv_img_mask), MASK_PROTO (c_mask))
+{
+  int i;
+  gf2n_t tbox_alt[TWO_POW_N];
+
+  //  printf ("\x1b[0;0H*** Status\n");
+  printf ("*** Status\n");
+
+#if 1
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (a_mask, i))
+      printf ("%2i ", a[i]);
+    else
+      printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < sbox_defined; i++)
+    printf ("%2i ", sbox[i]);
+  while (i++ < TWO_POW_N)
+    printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (binv_mask, i))
+      printf ("%2i ", binv[i]);
+    else
+      printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (c_mask, i))
+      printf ("%2i ", c[i]);
+    else
+      printf ("__ ");
+  printf ("\n");
+
+#endif
+  for (i = 0; i < TWO_POW_N; i++)
+    if (MASK_TEST (a_mask, i) && a[i] < sbox_defined
+	&& MASK_TEST (binv_mask, sbox[a[i]])
+	&& MASK_TEST (c_mask, i))
+      {
+	printf ("%2i ", galois_add (binv[sbox[a[i]]], c[i]));
+	tbox_alt[i] = galois_add (binv[sbox[a[i]]], c[i]);
+      }
+    else
+      printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < sbox_defined; i++)
+    printf ("%2i ", tbox[i]);
+  while (i++ < TWO_POW_N)
+    printf ("__ ");
+  printf ("\n");
+
+  return true;
+}
+#else
+#define report_success(d,a,av,b,bv,c) (true)
+#define report(d,a,av,b,bv,c) (true)
+#endif
+
+
+bool dc_recurse (unsigned int depth, MASK_PROTO (a_mask), MASK_PROTO (a_img_mask),
+	    MASK_PROTO (binv_mask), MASK_PROTO (binv_img_mask), MASK_PROTO (c_mask));
+
+/* Guess gamma.  */
+bool
+dc_recurse3 (unsigned int depth, MASK_PROTO (a_mask), MASK_PROTO (a_img_mask),
+	     MASK_PROTO (binv_mask), MASK_PROTO (binv_img_mask), MASK_PROTO (c_mask))
+{
+  unsigned int res;
+
+  /* unlike alpha and beta, gamma is affine left-refined.  So we could
+     infer the mask from depth.  But we want to share code, so we don't.  */
+
+  res = binv[sbox[a[depth]]];
+
+  /* First case: c[depth] is already defined.  Then check if we
+     found a result, have to keep looking, or can bounce.  */
+  if (MASK_TEST (c_mask, depth))
+    {
+      res = galois_add (res, c[depth]);
+
+      if (res != tbox[depth])
+	return 0;
+      else if (depth == sbox_defined - 1)
+	return report_success (depth, MASK_INV (a_mask), MASK_INV (a_img_mask),
+			       MASK_INV (binv_mask), MASK_INV (binv_img_mask), MASK_INV (c_mask));
+      else
+	return dc_recurse (depth + 1, MASK_INV (a_mask), MASK_INV (a_img_mask),
+			   MASK_INV (binv_mask), MASK_INV (binv_img_mask), MASK_INV (c_mask));
+    }  
+  else
+    {
+      MASK_DECL (new_c_mask);
+      gf2n_t i;
+      gf2n_t cval = galois_add (res, tbox[depth]);
+
+      MASK_COPY (new_c_mask, c_mask);
+
+      /* A guess means that we set c[depth] = cval, and then follow
+	 the implications of this guess.  */
+      c[depth] = cval;
+
+      MASK_SET (new_c_mask, depth);
+
+      for (i = 1; i < TWO_POW_N; i++)
+	{
+	  if (MASK_TEST (c_mask, i))
+	    {
+	      unsigned int nidx;
+	      unsigned int nimg;
+	      
+	      /* At this point, we know that c[0] is already defined!  */
+	      nidx = galois_add (depth, i);
+	      nimg = galois_add (c[0], galois_add (cval, c[i]));
+	      c[nidx] = nimg;
+	      MASK_SET (new_c_mask, nidx);
+	    }
+	}
+
+      if (depth == sbox_defined - 1)
+	return report_success (depth, MASK_INV (a_mask), MASK_INV (a_img_mask),
+			       MASK_INV (binv_mask), MASK_INV (binv_img_mask),
+			       MASK_INV (new_c_mask));
+      else
+	return dc_recurse (depth + 1, MASK_INV (a_mask), MASK_INV (a_img_mask),
+			   MASK_INV (binv_mask), MASK_INV (binv_img_mask),
+			   MASK_INV (new_c_mask));
+    }
+  return false;
+}
+
+bool
+verify_binv (int depth, int bdepth, MASK_PROTO (binv_mask))
+{
+  /* It suffices to test beta linear, the constant is swallowed up by gamma.  */
+  if (depth == 0 && bdepth != 0)
+    return true;
+
+  return false;
+}
+
+/* Guess binv[depth].  */
+bool
+dc_recurse2 (unsigned int depth, MASK_PROTO (a_mask), MASK_PROTO (a_img_mask),
+	     MASK_PROTO (binv_mask), MASK_PROTO (binv_img_mask), MASK_PROTO (c_mask))
+{
+  unsigned int idx;
+  unsigned int bidx;
+
+  idx = sbox[a[depth]];
+
+  /* First case: binv[idx] is already defined.  Then check if we
+     found a result, have to keep looking, or can bounce.  */
+  /* FIX: If yes, just pass on to gamma.  */
+  if (MASK_TEST (binv_mask, idx))
+    return dc_recurse3 (depth, MASK_INV (a_mask), MASK_INV (a_img_mask),
+			MASK_INV (binv_mask), MASK_INV (binv_img_mask), MASK_INV (c_mask));
+
+  /* Second case: binv[idx] is not defined.  We guess a value that is
+     linear independent of all the other values for binv, and that is
+     between 0 and s[depth].  If we can set it to a value smaller than
+     s[depth], we are done!  */
+  /* FIX: We guess a value that is between 0 and 2^n-1 and fix it up
+     by gamma.  */
+  for (bidx = 0; bidx < TWO_POW_N; bidx++)
+    {
+      unsigned int i;
+      MASK_DECL (new_binv_mask);
+      MASK_DECL (new_binv_img_mask);
+
+      if (MASK_TEST (binv_img_mask, bidx))
+	continue;
+      if (verify_binv (idx, bidx, binv_mask))
+	continue;
+
+      MASK_COPY (new_binv_mask, binv_mask);
+      MASK_COPY (new_binv_img_mask, binv_img_mask);
+
+      /* A guess means that we set binv[idx] = bidx, and then follow
+	 the implications of this guess.  */
+      binv[idx] = bidx;
+      MASK_SET (new_binv_mask, idx);
+      MASK_SET (new_binv_img_mask, bidx);
+      /* FIXME: Can be optimized by lowest bit search and clearing
+	 bits with the inverse of the mask!  */
+      /* binv[0] is not necessarily defined.  Thus, we take the first
+	 value we can get.  The others follow then by the equation:
+	 binv[x + y + c] = binv[x] + binv[y] + binv[c].  */
+      for (i = 0; i < TWO_POW_N; i++)
+	if (MASK_TEST (binv_mask, i))
+	  break;
+      if (i != TWO_POW_N)
+	{
+	  gf2n_t c = i++;
+	  gf2n_t binvc = binv[c];
+
+	  while (i < TWO_POW_N)
+	    {
+	      unsigned int nidx = galois_add (c, galois_add (idx, i));
+	      unsigned int nimg;
+
+	      if (MASK_TEST (binv_mask, i))
+		{
+		  nimg = galois_add (binvc, galois_add (bidx, binv[i]));
+
+		  if (verify_binv (nidx, nimg, new_binv_mask))
+		    break;
+
+		  binv[nidx] = nimg;
+		  MASK_SET (new_binv_mask, nidx);
+		  MASK_SET (new_binv_img_mask, nimg);
+		}
+
+	      i++;
+	    }
+	  if (i != TWO_POW_N)
+	    continue;
+	}
+
+      /* FIX: Just pass on to gamma.  */
+      if (dc_recurse3 (depth, MASK_INV (a_mask), MASK_INV (a_img_mask),
+		       MASK_INV (new_binv_mask), MASK_INV (new_binv_img_mask),
+		       MASK_INV (c_mask)) == true)
+	return true;
+    }
+  return false;
+}
+
+
+bool
+verify_a (int depth, int adepth)
+{
+#if 0
+  //if (depth != adepth)
+  //    return true;
+  //  if (depth == 0 && adepth < 3)
+  //    return true;
+  /* A is left refined.  */
+
+
+  // 4577
+  //  if (depth == 0 && adepth != 0)
+  //    return true;
+  // (1 2 17 10 24)
+#if 0
+  if (depth == 2 || depth == 10 || depth == 17 || depth == 24)
+    if (adepth < a[1])
+      return true;
+  if (depth != 23)
+    if (adepth < a[0])
+      return true;
+#endif
+#if 0
+  if (depth != 0 && depth != 23)
+    if (adepth < a[0])
+      return true;
+  if (depth == 0 && adepth > 1)
+    return true;
+  if (depth == 23)
+    if (a[0] == 1 && adepth > 0)
+      return true;
+  // (1 2 17 10 24)
+  if (depth == 2 || depth == 10 || depth == 17 || depth == 24)
+    if (adepth < a[1])
+      return true;
+
+#endif
+#if 0
+  if (depth == 0 && adepth != 1)
+    return true;
+  if (depth == 1 && adepth != 17)
+    return true;
+#endif
+
+  // (0)(1)(2 11 28 27 14)(3 10 29 26 15)(4 31 17 19 24)(5 30 16 18 25)(6 20 13 8 22)(7 21 12 9 23)
+  // (0)(1 2 9 18 24)(3 11 27 10 25)(4 22 14 15 13)(5 20 7 29 21)(6 31 28 23 12)(8 16 17 19 26)(30)
+  if (depth == 11 || depth == 28 || depth == 27 || depth == 14)
+    if (adepth < a[2])
+      return true;
+  if (depth != 0 && depth != 1)
+    if (adepth < a[1])
+      return true;
+#endif
+  
+#if 0
+  // Funktion 1:
+  if (depth == 1)
+    if (adepth < a[0])
+      return true;
+  if (depth == 2 || depth == 4)
+    if (adepth < a[1])
+      return true;
+  if (depth == 3)
+    if (adepth < a[2])
+      return true;
+  if (depth >= 5)
+    if (adepth < a[4])
+      return true;
+#endif
+#if 0
+  // Funktion 2:
+if (depth == 1 || depth == 2 || depth == 4)
+    if (adepth < a[0])
+      return true;
+  if (depth == 3)
+    if (adepth < a[2])
+      return true;
+  if (depth >= 5)
+    if (adepth < a[4])
+      return true;
+#endif
+  return false;
+}
+
+static int found;
+
+/* Guess a[depth].  */
+bool
+dc_recurse (unsigned int depth, MASK_PROTO (a_mask), MASK_PROTO (a_img_mask),
+	    MASK_PROTO (binv_mask), MASK_PROTO (binv_img_mask), MASK_PROTO (c_mask))
+{
+  int adepth;
+
+#if 0
+  if (count == 0)
+    {
+      if (depth > 0)
+	report (depth - 1, MASK_INV (a_mask), MASK_INV (a_img_mask),
+		MASK_INV (binv_mask), MASK_INV (binv_img_mask), MASK_INV (c_mask));
+      count = COUNT;
+    }
+  else
+    count--;
+#endif
+
+  /* First case: a[depth] was already defined in a previous step (by
+     linear dependence).  In this case, just skip over to the guess
+     for binv.  */
+  if (MASK_TEST (a_mask, depth))
+    {
+      /* If sbox[a[depth]] happens to be indeterminate, we have to
+	 bounce here.  */
+      if (a[depth] >= sbox_defined)
+	return 0;
+
+      return dc_recurse2 (depth, MASK_INV (a_mask), MASK_INV (a_img_mask),
+			  MASK_INV (binv_mask), MASK_INV (binv_img_mask), MASK_INV (c_mask));
+    }
+
+  /* Second case: a[depth] is not defined yet.  We guess it as
+     anything that's not cleared in a_img_mask but is between 0 and
+     sbox_defined-1 (inclusive).  */
+  for (adepth = 0; adepth < sbox_defined; adepth++)
+    {
+      int i;
+      MASK_DECL (new_a_mask);
+      MASK_DECL (new_a_img_mask);
+
+      if (MASK_TEST (a_img_mask, adepth))
+	continue;
+
+      if (verify_a (depth, adepth))
+	continue;
+	
+      MASK_COPY (new_a_mask, a_mask);
+      MASK_COPY (new_a_img_mask, a_img_mask);
+
+      /* A guess means that we set a[depth] = adepth, and then follow
+	 the implications of this guess up to binv.  */
+      a[depth] = adepth;
+      MASK_SET (new_a_mask, depth);
+      MASK_SET (new_a_img_mask, adepth);
+      /* FIXME: Can be optimized by lowest bit search and clearing
+	 bits with the inverse of the mask!  */
+      for (i = 1; i < TWO_POW_N; i++)
+	{
+	  if (MASK_TEST (a_mask, i))
+	    {
+	      unsigned int nidx;
+	      unsigned int nimg;
+
+	      /* At this point, we know that a[0] is already defined!
+		 Because we have _some_ values set, and a[0] is the
+		 first one to be defined.  */
+	      nidx = galois_add (depth, i);
+	      nimg = galois_add (a[0], galois_add (adepth, a[i]));
+
+	      if (verify_a (nidx, nimg))
+		break;
+
+	      a[nidx] = nimg;
+	      MASK_SET (new_a_mask, nidx);
+	      MASK_SET (new_a_img_mask, nimg);
+	    }
+	}
+      if (i != TWO_POW_N)
+	continue;
+
+      if (dc_recurse2 (depth, MASK_INV (new_a_mask), MASK_INV (new_a_img_mask),
+		       MASK_INV (binv_mask), MASK_INV (binv_img_mask), MASK_INV (c_mask)))
+	//	  return true;
+	{
+	  // Keep going;
+	  found++;
+	}
+    }
+
+  return false;
+}
+
+#if 1
+
+void
+walk (int depth, MASK_PROTO (sbox_img_mask))
+{
+  int i;
+
+  for (i = 0; i < TWO_POW_N; i++)
+    {
+      if (depth == 3 && i == 3)
+	continue;
+
+      //      if (! MASK_TEST (sbox_img_mask, i))
+	{
+	  sbox[depth] = i;
+	  sbox_defined = depth + 1;
+	  if (!dc_recurse (0, 0, 0, 0, 0, 0))
+	    {
+#define MAXDEPTH 16
+	      if (depth == MAXDEPTH - 1)
+		{
+		  int j;
+		  for (j = 0; j < MAXDEPTH; j++)
+		    printf ("%2i ", sbox[j]);
+		  printf ("\n");
+		}
+	      else
+		{
+		  MASK_DECL (new_sbox_img_mask);
+
+		  MASK_COPY (new_sbox_img_mask, sbox_img_mask);
+		  MASK_SET (new_sbox_img_mask, i);
+		  walk (depth + 1, MASK_INV (new_sbox_img_mask));
+		}
+	    }
+	}
+    }
+}
+
+#endif
+
+int
+main (int argc, char *argv[])
+{
+  int i;
+  gf2n_t sbox_copy[TWO_POW_N];
+  MASK_DECL (a_mask);
+  MASK_DECL (a_img_mask);
+  MASK_DECL (b_mask);
+  MASK_DECL (b_img_mask);
+  MASK_DECL (c_mask);
+
+  MASK_RESET (a_mask);
+  MASK_RESET (a_img_mask);
+  MASK_RESET (b_mask);
+  MASK_RESET (b_img_mask);
+  MASK_RESET (c_mask);
+
+
+  for (i = 0; i < TWO_POW_N; i++)
+    {
+      /* Cumulative results.  */
+      cuma[i] = i;
+      cumbinv[i] = i;
+      cumc[i] = 0;
+    }
+
+  //  walk (0, 0);
+  //  return 0;
+#if 0
+  /* Power functions.  */
+  static gf2n_t poly[TWO_POW_N];
+
+  galois_init ();
+  i = argc > 1 ? atoi (argv[1]) : 0;
+
+  if (i == 0 || i >= (TWO_POW_N - 1))
+    {
+      fprintf (stderr, "Usage: %s POWER\n", argv[0]);
+      exit (1);
+    }
+
+  /* Set the S box to x^n (TWO_POW_N - 1 - i).  */
+  poly[TWO_POW_N - 1 - i] = 1;
+  for (i = 0; i < TWO_POW_N; i++)
+    sbox_copy[i] = sbox[i] = galois_eval_poly (TWO_POW_N, poly, i);
+  for (i = 0; i < TWO_POW_N; i++)
+    fprintf (stderr, "%i ", sbox[i]);
+  fprintf (stderr, "\n");
+  for (i = 0; i < TWO_POW_N; i++)
+    fprintf (stderr, "%i ", galois_mul (galois_mul (sbox[i], i), i));
+  fprintf (stderr, "\n");
+
+  sbox_defined = TWO_POW_N;
+
+#else
+  if (argc != 2*TWO_POW_N + 1)
+    {
+      fprintf (stderr, "Usage: %s SBOX-TEMPLATE-1 ...\n", argv[0]);
+      exit (1);
+    }
+
+  sbox_defined = TWO_POW_N;
+  for (i = 0; i < TWO_POW_N; i++)
+    sbox_copy[i] = sbox[i] = (i < sbox_defined) ? atoi (argv[i + 1]) : 0;
+  for (i = 0; i < TWO_POW_N; i++)
+    tbox[i] = (i < sbox_defined) ? atoi (argv[TWO_POW_N + i + 1]) : 0;
+
+#endif
+
+  if (!dc_recurse (0, MASK_INV (a_mask), MASK_INV (a_img_mask), MASK_INV (b_mask),
+		  MASK_INV (b_img_mask), MASK_INV (c_mask)))
+    ;//    printf ("NOT EQUIVALENT\n");
+
+#if 0
+  printf ("*** Cumulative\n");
+  for (i = 0; i < TWO_POW_N; i++)
+    printf ("%2i ", cuma[i]);
+  printf ("\n");
+
+  for (i = 0; i < sbox_defined; i++)
+    printf ("%2i ", sbox_copy[i]);
+  while (i++ < TWO_POW_N)
+    printf ("__ ");
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    printf ("%2i ", cumbinv[i]);
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    printf ("%2i ", cumc[i]);
+  printf ("\n");
+
+  for (i = 0; i < TWO_POW_N; i++)
+    printf ("%2i ", galois_add (cumc[i], cumbinv[sbox_copy[cuma[i]]]));
+  printf ("\n");
+#endif
+
+  {
+    int span;
+    int j;
+    long long beta_order;
+    long long group_order;
+
+    span = 0;
+    for (i = 0; i < TWO_POW_N; i++)
+      span |= sbox_copy[i];
+    j = 0;
+    for (i = 1; i < TWO_POW_N; i <<= 1)
+      if (span & i)
+	j++;
+    beta_order = 1;
+
+    for (i = j; i < N; i++)
+      beta_order *= (long long) (TWO_POW_N - (1 << i));
+
+    group_order = 1;
+    for (i = 0; i < N; i++)
+      group_order *= (long long) (TWO_POW_N - (1 << i));
+    group_order = group_order * group_order * TWO_POW_N;
+    for (i = 0; i < N + 1; i++)
+      group_order = group_order * TWO_POW_N;
+
+    printf ("%lli / (%i * %lli = %lli) = %lli\n", group_order,
+	    found, beta_order, beta_order * found,
+	    group_order / beta_order / found);
+  }
+}
+

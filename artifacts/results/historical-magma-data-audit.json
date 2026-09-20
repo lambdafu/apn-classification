@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "artifact": "historical-magma-data-audit",
+  "completed": true,
+  "original_directory": "apn-data/ccz-classes",
+  "source_sha256": {
+    "convertFkt.mgm": "651d8430dde7b2dc2d5b6248d8a5d1241dbec631532adccdefd0d7bb6ac05c3e",
+    "dim-1-ea-class.mgm": "e08975b9c9367829c70c3102effe1371d662c24944d3d4d5d9b5d981b8482f22",
+    "dim-1-ea.mgm": "e6d4b60524959270b4cd7e07ea51030bded59a289b5e8c6817a57e46e18ce171",
+    "dim-2-ea-class.mgm": "a55ec21d224a65af611ef1623248e53e4365815e050342ac4c821bb5f0a8f71b",
+    "dim-2-ea.mgm": "3f94b7de0782490d9a701a4dc7bf3b74c337128afb20f8735152448148249100",
+    "dim-3-ea-class.mgm": "64b60912d0201259509a47f841ab6bf005ce819cf10e02db9715542eb7eefb4f",
+    "dim-3-ea.mgm": "a5caba4872c750d3d1fb3bbdc4d0ec3da0899ac9bfcea5e14564998df78c23d9",
+    "dim-4-ea-class.mgm": "f2cbab6f1b6d6afc1f393cdd44c091ead4b07be682f07ae121dd1fce02b64142",
+    "dim-4-ea.mgm": "e65cd9deffe16e8dd8ae5f112934cf561fbf81ba5904f0f990f6214a8fbe404a",
+    "CCZ-4-out.txt": "86d0c2af5c976ff6fa4d92cc6dde70dcfa190bfc5fd033ec7692b87b6aa488ce",
+    "EA-cmd.txt": "24dcfb8c509acf6242d3eb1884ecb2515e2a14ebf6a20ef402769946e6d3c6fb"
+  },
+  "verifier_sha256": "dd600a99fdfd1087f12b6b123ebefb811dd6f83d98667eeb7f204786697e8a6a",
+  "published_data_sha256": "c4fd7ca8a7cad3c036fbef5795883f2af8f5aa0315031e910801284b8dfda7de",
+  "candidate_checks": [
+    {
+      "dimension": 1,
+      "published_tables_match": 1,
+      "extra_tables": [
+        [
+          0,
+          1
+        ]
+      ],
+      "note": "Extra identity function is EA-equivalent to zero by adding itself."
+    },
+    {
+      "dimension": 2,
+      "published_tables_match": 2,
+      "extra_tables": [],
+      "note": null
+    },
+    {
+      "dimension": 3,
+      "published_tables_match": 7,
+      "extra_tables": [],
+      "note": null
+    },
+    {
+      "dimension": 4,
+      "published_tables_match": 4713,
+      "extra_tables": [],
+      "note": null
+    }
+  ],
+  "log_header": "Magma V2.11-2     Sun Mar 16 2008 21:37:14    [Seed = 461494415]",
+  "ccz_canonical_rows_match": 4151,
+  "ccz_assignments_match": 4713,
+  "log_final_line": "Total time: 33723.769 seconds, Total memory usage: 43.28MB",
+  "note": "Archived output parsed and compared, not a new Magma execution."
+}

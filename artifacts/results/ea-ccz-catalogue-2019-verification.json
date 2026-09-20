@@ -1,0 +1,13 @@
+{
+  "completed": true,
+  "artifact": "ea-ccz-catalogue-2019-replay",
+  "record_sha256": "bfd40e5f12ad8c8a2fd4c8d4a2711c72885eb797238cb79388d10968e94f8f43",
+  "verifier_sha256": "cbf19ae14b73408edf4774cc803c1dea3e96e0ebcc8aac42f3d3db247fe93c11",
+  "checks": {
+    "rows": 4723,
+    "ccz_witnesses": 562,
+    "permutation_witnesses": 200
+  },
+  "seconds": 0.4560677499976009,
+  "scope": "Source hashes, positive witnesses, table properties and arithmetic; exhaustive searches and negative decisions are not repeated."
+}

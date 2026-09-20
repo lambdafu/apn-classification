@@ -1,0 +1,12 @@
+warning: /var/folders/pt/qpmwn0vn4sl3_sth56lzz1gc0000gn/T/sage_mutzcbj9/spyx_8t7_b9s6/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx_0.pyx:10:18: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+warning: /var/folders/pt/qpmwn0vn4sl3_sth56lzz1gc0000gn/T/sage_mutzcbj9/spyx_8t7_b9s6/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx_0.pyx:10:30: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+warning: /var/folders/pt/qpmwn0vn4sl3_sth56lzz1gc0000gn/T/sage_mutzcbj9/spyx_8t7_b9s6/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx_0.pyx:10:46: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+warning: /var/folders/pt/qpmwn0vn4sl3_sth56lzz1gc0000gn/T/sage_mutzcbj9/spyx_8t7_b9s6/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx_0.pyx:16:28: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+warning: /var/folders/pt/qpmwn0vn4sl3_sth56lzz1gc0000gn/T/sage_mutzcbj9/spyx_8t7_b9s6/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx_0.pyx:16:41: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+warning: /var/folders/pt/qpmwn0vn4sl3_sth56lzz1gc0000gn/T/sage_mutzcbj9/spyx_8t7_b9s6/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx/_Users_marcus_Desktop_NDS_Forschung_apn_artifacts_cython_ea_catalogue_pyx_0.pyx:16:59: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+n=1: 1/1 EA rows, 1 CCZ classes, 0.1s
+n=2: 2/2 EA rows, 2 CCZ classes, 0.0s
+n=3: 7/7 EA rows, 7 CCZ classes, 0.0s
+n=4: 2200/4713 EA rows, 2055 CCZ classes, 20.0s
+n=4: 4438/4713 EA rows, 3905 CCZ classes, 40.0s
+n=4: 4713/4713 EA rows, 4151 CCZ classes, 42.4s

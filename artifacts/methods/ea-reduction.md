@@ -131,8 +131,10 @@ The [completed run record](../results/ea-reduction-5.json),
 [separate certificate replay](../results/ea-reduction-5-verification.json)
 provide the maintained evidence. This fills the candidate-reduction step
 between the completed search and the existing CCZ/stabilizer calculations.
-It does not reconstruct article Algorithm 3 or verify the remaining
-power-function correspondences.
+It does not itself reconstruct article Algorithm 3; that now has a separate
+[historical reconstruction](historical-stabilizers.md). The separate
+[power-correspondence experiment](power-correspondences.md) now verifies the
+field-function identifications.
 
 ## From candidate coverage to the classification theorem
 

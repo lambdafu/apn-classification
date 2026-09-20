@@ -1,0 +1,22 @@
+{
+  "completed": true,
+  "artifact": "apn-permutations-from-ea-replay",
+  "record_sha256": "906c570177f0c73d567effc4839f86a73c92f39ca9d45b79db64f6cb819e2e74",
+  "verifier_sha256": "cbf19ae14b73408edf4774cc803c1dea3e96e0ebcc8aac42f3d3db247fe93c11",
+  "checks": {
+    "representatives": 5,
+    "affine_witnesses": 10,
+    "correction_assignments": 67,
+    "correction_counts_by_EA_row": [
+      32,
+      32,
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "seconds": 0.013972166983876377,
+  "scope": "Source hashes, positive witnesses, table properties and arithmetic; exhaustive searches and negative decisions are not repeated."
+}

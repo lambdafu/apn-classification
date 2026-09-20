@@ -4,13 +4,18 @@ This directory is the research artifact: readable SageMath experiments,
 optional Cython acceleration, explicit inputs, and evidence for Marcus
 Brinkmann's 2007 diploma thesis and the 2008 Brinkmann–Leander article.
 It is being built in stages. Start with the [claim ledger](CLAIMS.md).
+The [2019 catalogue reproduction](methods/ea-ccz-catalogue-2019.md) extends
+the scope to all vectorial Boolean functions through dimension four.
 The [repository README](../README.md#sources) links the included diploma thesis
 and the publisher reference for the article; the Springer PDF is not bundled.
 
 The [algorithm provenance audit](methods/provenance.md) distinguishes historical
 reconstruction from independent checks and modern replacements. In particular,
-the current supplied-table CCZ/stabilizer experiment uses new methods; matching
-the published counts does not complete reconstruction of those algorithms.
+the supplied-table CCZ/stabilizer experiment uses modern methods. The separate
+[Algorithm 3 and Note 9 reconstruction](methods/historical-stabilizers.md)
+now supplies recursive generator discovery and the published orbit pruning.
+An optional [historical C snapshot](historic/README.md) preserves a related
+original counting program, its dependencies, and the surviving compiler flags.
 
 ## Run the experiments
 
@@ -27,14 +32,25 @@ make reproduce    # Compare it with two independent Cython algorithms
 make planes       # Plane counts; all input subsets through dimension four
 make refinement   # Affine templates checked against Sage matrix enumeration
 make canonicity   # Nested affine/EA searches; dimension-four classification
+make permutations5-from-ea # Five affine APN permutation classes from complete EA coverage
+make verify-permutations5 # Replay 67 correction assignments and 10 power/inverse witnesses
+make permutations5 # Separate direct permutation-tree search (potentially long)
 make candidates5  # Compiled dimension-five weak EA search; potentially long
 make reduce5 WORKERS=8  # Exact reduction of the saved 11,768 candidates
 make verify-reduction5 # Replay every saved EA assignment certificate
+make powers      # Power functions and trace-family EA witnesses in n=4,5
+make verify-powers # Replay their saved certificates (no search)
+make historical-stabilizers # Algorithm 3 and Note 9, n=4,5 (several minutes)
+make verify-historical-stabilizers # Replay generator certificates and orbit totals
+make catalogue2019 # All EA/CCZ classes through dimension four
+make verify-catalogue2019 # Replay witnesses and compare archived Magma results
 ```
 
 `make` defaults to `make reproduce`. Use `make SAGE=/path/to/sage ...` to select
 an installation. Each target writes a completed JSON record under `build/`.
-Selected actual runs are retained under `results/`; they are not search inputs.
+Selected completed runs are retained under `results/`. Later stages consume
+explicitly documented records and candidate lists from that directory; a new
+run writes to `build/` without replacing the retained evidence.
 Methods, scope, and recorded evidence are linked in the ledger.
 
 The baseline compares every accepted table, in order, across an immutable
@@ -89,8 +105,8 @@ with that earlier search. The method records the conventions and validation.
 
 The [seven published dimension-five inputs](data/dimension-five.json) are
 transcribed and independently checked for APN, normalization, degrees, and
-Walsh spectra. The [input verification and classification plan](methods/dimension-five.md)
-separate these small checks from the pending EA/CCZ classification and record
+Walsh spectra. The [input verification and completed classification stages](methods/dimension-five.md)
+separate the small supplied-input checks from the full classification and record
 a Walsh-spectrum convention mismatch in the article.
 
 The [CCZ and EA-stabilizer experiment](methods/ccz-stabilizers.md) is a modern
@@ -99,13 +115,23 @@ graphs for CCZ, and code automorphism groups intersected with affine input
 permutations give EA stabilizers. It reproduces the supplied representatives' CCZ
 partition, all nine published n=4,5 EA stabilizer orders, and explicit witness
 maps. Run `sage -python sage/ccz_stabilizers.sage --output build/ccz-stabilizers.json`.
-Reconstruction of article Algorithm 3 remains pending. The author abandoned
-the direct CCZ approach; it is historical context, not required reconstruction.
+The separate [historical reconstruction](methods/historical-stabilizers.md)
+recovers all nine stabilizers by recursive three-template search. It discovers
+exactly the three Note 9 generators, in order, starting from the identity, and
+constructs the filter from just the known generators fixing earlier positions.
+The method includes a short command for running only that example. The full
+record took about 6½ minutes; the readable n=4 run took about four seconds.
+Both have completed certificate replays. The author abandoned the direct CCZ
+approach; it remains historical context, not required reconstruction.
 The [completed EA reduction](methods/ea-reduction.md) now assigns all 11,768
 saved candidates to the seven published representatives, with checked maps
 and all 21 exact pairwise inequivalence tests. This supplies the coverage step
 for the existing CCZ classification and orbit total. It does not reconstruct
-the historical stabilizer algorithm or the remaining power correspondences.
+the historical stabilizer algorithm. The
+[power and trace-family experiment](methods/power-correspondences.md) now
+supplies 32 checked EA transformations and exhausts all power exponents in
+dimensions four and five. Its saved certificates can also be replayed with
+ordinary Python.
 
 The standard Sage code-equivalence call also completes the remaining n=5
 row-1/row-2 inequivalence test in about **83 seconds**. Run

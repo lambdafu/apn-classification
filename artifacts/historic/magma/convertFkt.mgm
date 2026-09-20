@@ -1,0 +1,155 @@
+//liefert eine Vektor im GF(2)^n
+bin:=function(x,n)
+	y:=Integers()!x;
+	a:=VectorSpace(GF(2),n)!0;
+	i:=0;
+	while (y ge 1) do
+		if ((Integers()!y mod 2) eq 0) then
+			a[n-i]:=0;	
+		else 
+			y:=y-1;
+			a[n-i]:=1;
+		end if;
+		y:=(y/2);
+		i:=i+1;
+	end while;
+	return a;
+end function;
+
+binMgm:=function(x,n)
+	y:=Integers()!x;
+	a:=VectorSpace(GF(2),n)!0;
+	i:=0;
+	while (y ge 1) do
+		if ((Integers()!y mod 2) eq 0) then
+			a[i+1]:=0;	
+		else 
+			y:=y-1;
+			a[i+1]:=1;
+		end if;
+		y:=(y/2);
+		i:=i+1;
+	end while;
+	return a;
+end function;
+
+//liefert ein Integer
+binInv:=function(x,n)
+	y:=0;
+	for i in [1..n] do
+		y:=y+2^(n-i)*(Integers()!x[i]);
+	end for;
+	return y;
+end function;
+
+//liefert ein Integer
+binInvMgm:=function(x,n)
+	y:=0;
+	for i in [1..n] do
+		y:=y+2^(i-1)*(Integers()!x[i]);
+	end for;
+	return y;
+end function;
+
+
+convertFKT2TT:=function(f,L)
+	V,phi:=VectorSpace(L,GF(2));
+	n:=Dimension(V);	
+	L:=[0 : i in [0..2^n-1]];
+	i:=0;
+	for v in V do
+		L[binInvMgm(v,n)+1]:=binInvMgm(phi(f(v@@phi)),n);		
+	 //v,binInv(v,n),binInv(phi(f(v@@phi)),n);
+	end for;	
+	return L;
+	
+end function;
+
+convertFKT2TT2:=function(f,L)
+	V,phi:=VectorSpace(L,GF(2));
+	n:=Dimension(V);	
+	List:=[0 : i in [0..2^n-1]];
+	for v in V do
+		List[binInv(v,n)+1]:=binInv(phi(f(v@@phi)),n);		
+	 //v,binInv(v,n),binInv(phi(f(v@@phi)),n);
+	end for;	
+	return List;
+	
+end function;
+
+correctionMap:=function(L)
+	V,phi:=VectorSpace(L,GF(2));
+	n:=Dimension(V);	
+	List:=[];
+	for v in V do		
+	 	x:=v@@phi;
+	 	y:=(binMgm(binInv(v,n),n))@@phi;
+	 List:=Include(List,<x,y>);
+	end for;	
+	f:=map<L -> L | List >;				
+	return f;
+end function;
+
+
+convertTT2Poly:=function(List,L) 
+	P<x>:=PolynomialRing(L);
+	V,phi:=VectorSpace(L,GF(2));
+	n:=Dimension(V);
+	//berechne die Basispolynome
+	B:=[P!0 : i in [1..2^n]];
+	for v in V do
+		a:=v@@phi;
+		B[binInvMgm(v,n)+1]:=&*[ (x-b)/(a-b) : b in L | b ne a];
+	end for;
+	
+	R:=P!0;
+	for v in V do
+		y:=binMgm(List[binInvMgm(v,n)+1],n)@@phi;
+		R:=R+y*B[binInvMgm(v,n)+1];
+	end for;
+	return R;
+end function;
+
+convertFkt2Poly:=function(f,L)
+	P<x>:=PolynomialRing(L);
+	V,phi:=VectorSpace(L,GF(2));
+	n:=Dimension(V);
+		
+	//berechne die Basispolynome
+	B:=[P!0 : i in [1..2^n]];
+	for v in V do
+		a:=v@@phi;
+		B[binInvMgm(v,n)+1]:=&*[ (x-b)/(a-b) : b in L | b ne a];
+	end for;
+	
+	R:=P!0;
+	for v in V do
+		R:=R+f(v@@phi)*B[binInvMgm(v,n)+1];
+	end for;
+	return R;	
+	
+end function;
+
+convertTT2Fkt:=function(List,L)
+	List2:=[];
+	V,phi:=VectorSpace(L,GF(2));
+	n:=Dimension(V);
+	for v in V do
+		y:=binMgm(List[binInvMgm(v,n)+1],n)@@phi;
+		x:=v@@phi;
+		List2:=Include(List2,<x,y>);
+	end for;
+	
+	f:=map<L -> L | List2 >;
+	return f;
+end function;
+
+getInverseMap:=function(f,L)
+	List:=[];
+	for x in L do
+		List:=Include(List,<f(x),x>);
+	end for;
+	fInv:=map<L -> L | List >;				
+	return fInv;
+	
+end function;

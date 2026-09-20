@@ -1,0 +1,17 @@
+CFLAGS=-march=core2 -mfpmath=sse -fomit-frame-pointer -ffast-math -O3
+#CFLAGS=-Wall -O3 -fomit-frame-pointer
+#CFLAGS=-g -Wall
+
+#ICC:
+#icc -O3 -xN -tpp7 -ipo
+
+all: apn-8 apn-16
+
+apn-8.c: galois.c galois.h
+apn-8: apn-8.o
+
+apn-16.c: galois.c galois.h
+apn-16: apn-16.o
+
+clean:
+	rm -f galois

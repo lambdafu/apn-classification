@@ -1,0 +1,105 @@
+{
+  "artifact": "historical-stabilizer-certificate-replay",
+  "cases": [
+    {
+      "dimension": 4,
+      "ea_group_order": 6818690079129600,
+      "ea_orbit_size": 1183800360960,
+      "generators": 7,
+      "representative": 1,
+      "stabilizer_order": 5760
+    },
+    {
+      "dimension": 4,
+      "ea_group_order": 6818690079129600,
+      "ea_orbit_size": 17757005414400,
+      "generators": 7,
+      "representative": 2,
+      "stabilizer_order": 384
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 692647993190048071680,
+      "generators": 3,
+      "representative": 1,
+      "stabilizer_order": 4960
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 692647993190048071680,
+      "generators": 3,
+      "representative": 2,
+      "stabilizer_order": 4960
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 21472087788891490222080,
+      "generators": 3,
+      "representative": 3,
+      "stabilizer_order": 160
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 21472087788891490222080,
+      "generators": 3,
+      "representative": 4,
+      "stabilizer_order": 160
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 22164735782081538293760,
+      "generators": 2,
+      "representative": 5,
+      "stabilizer_order": 155
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 22164735782081538293760,
+      "generators": 2,
+      "representative": 6,
+      "stabilizer_order": 155
+    },
+    {
+      "dimension": 5,
+      "ea_group_order": 3435534046222638435532800,
+      "ea_orbit_size": 22164735782081538293760,
+      "generators": 2,
+      "representative": 7,
+      "stabilizer_order": 155
+    }
+  ],
+  "completed": true,
+  "coverage": "Orbit totals count all APN functions when combined with the separate completed EA classifications.",
+  "ea_orbits_total": {
+    "4": 18940805775360,
+    "5": 110823678910407691468800
+  },
+  "finished_utc": "2026-09-20T20:17:18.722951+00:00",
+  "negative_searches_reexecuted": false,
+  "note9_checks": {
+    "accepted": 811,
+    "affine_prefixes": 1024,
+    "first_two_images_fixed": true,
+    "printed_generators_verified": true,
+    "rejected": 213,
+    "seed": 2008
+  },
+  "record_sha256": "32402fffd010c38737db73b15bb4067d66d85a03a16816e32defbf70fa85d090",
+  "sage_version": "10.6",
+  "seconds": 0.22437345798243769,
+  "source_sha256": {
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/ea_equivalence.py": "7dcf7218aa385786d442c22c6424497f7f4cf2aab1cbae80b064bd848eca0624",
+    "lib/historical_stabilizer.py": "3ed96050f8d0f4d6219b75a104000a1cb339612c03c4883245b02ba614733824",
+    "sage/historical_stabilizers.sage": "361cd2164def239b7ecf63c716f92abbe631e599707896c7da060011b7a06a93",
+    "sage/verify_historical_stabilizers.sage": "15e6f7f96f066bb1c3c29d25315d97a379d211840bcff5ff27d0108900054862"
+  },
+  "verified_witnesses": 33
+}
