@@ -1,0 +1,729 @@
+{
+  "artifact": "ea-candidates",
+  "build": {
+    "cython_version": "3.0.11",
+    "extension_sha256": "7e24986503e37d16306dd011078cb81d9932ecf1046fa8e72c62fb9f7e428035",
+    "loader": "sage.misc.cython.cython_import",
+    "note": "Compiler defaults are Python build configuration, not a captured compiler invocation; source directives also apply.",
+    "python_build_configuration": {
+      "CC": "clang",
+      "CFLAGS": "-fno-strict-overflow -Wsign-compare -Wunreachable-code -DNDEBUG -g -O3 -Wall   -Wno-unused -O2 -mmacosx-version-min=11.0",
+      "LDSHARED": "clang -bundle -undefined dynamic_lookup -L/private/var/tmp/sage-10.6-current/local/lib -L/private/var/tmp/sage-10.6-current/local/lib -Wl,-platform_version,macos,11.0,11.1 -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -L/private/var/tmp/sage-10.6-current/local/lib -L/private/var/tmp/sage-10.6-current/local/var/lib/sage/venv-python3.12.5/lib -L/private/var/tmp/sage-10.6-current/local/lib -L/private/var/tmp/sage-10.6-current/local/lib -Wl,-platform_version,macos,11.0,11.1 -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+    },
+    "source": "cython/affine_search.pyx",
+    "source_sha256": "be688e500588c26de1533d97be1a4cccf52ffab213e01cbd929d6c224e3e577f"
+  },
+  "checks": [
+    {
+      "check": "all_small_templates_and_prefixes",
+      "dimension": 1,
+      "prefix_poison_cases": 21,
+      "templates": 9,
+      "transition_poison_cases": 216
+    },
+    {
+      "check": "all_small_templates_and_prefixes",
+      "dimension": 2,
+      "prefix_poison_cases": 1023,
+      "templates": 177,
+      "transition_poison_cases": 16992
+    },
+    {
+      "check": "high_bit_translated_bases",
+      "dimensions": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "candidates": 1,
+      "check": "complete_search_comparison",
+      "dimension": 1,
+      "normalized": true,
+      "permutations": false,
+      "poison_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "candidates": 1,
+      "check": "complete_search_comparison",
+      "dimension": 2,
+      "normalized": true,
+      "permutations": false,
+      "poison_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "candidates": 1,
+      "check": "complete_search_comparison",
+      "dimension": 3,
+      "normalized": true,
+      "permutations": false,
+      "poison_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "candidates": 15,
+      "check": "complete_search_comparison",
+      "dimension": 4,
+      "normalized": true,
+      "permutations": false,
+      "poison_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "candidates": 1,
+      "check": "complete_search_comparison",
+      "dimension": 3,
+      "normalized": false,
+      "permutations": true,
+      "poison_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "candidates": 0,
+      "check": "complete_search_comparison",
+      "dimension": 4,
+      "normalized": false,
+      "permutations": true,
+      "poison_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "affine_checks_by_depth": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "affine_skips_by_depth": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "apn_completions": 3,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 1,
+      "dimension": 2
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        0,
+        0,
+        3
+      ],
+      "affine_skips_by_depth": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "apn_completions": 3,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 2,
+      "dimension": 2
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        0,
+        3
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "apn_completions": 3,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 3,
+      "dimension": 2
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        3
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "apn_completions": 3,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 4,
+      "dimension": 2
+    },
+    {
+      "affine_checks_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        168
+      ],
+      "affine_skips_by_depth": [
+        1,
+        1,
+        1,
+        7,
+        7,
+        42,
+        168,
+        0
+      ],
+      "apn_completions": 168,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 1,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        168
+      ],
+      "affine_skips_by_depth": [
+        0,
+        1,
+        1,
+        7,
+        7,
+        42,
+        168,
+        0
+      ],
+      "apn_completions": 168,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 2,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        168
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        1,
+        7,
+        7,
+        42,
+        168,
+        0
+      ],
+      "apn_completions": 168,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 3,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        168
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        7,
+        7,
+        42,
+        168,
+        0
+      ],
+      "apn_completions": 168,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 4,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        7,
+        0,
+        0,
+        0,
+        24
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        6,
+        24,
+        0
+      ],
+      "apn_completions": 24,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 5,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        7,
+        1,
+        0,
+        0,
+        24
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        24,
+        0
+      ],
+      "apn_completions": 24,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 6,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        7,
+        1,
+        6,
+        0,
+        4
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0
+      ],
+      "apn_completions": 4,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 7,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        7,
+        1,
+        6,
+        4,
+        1
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "apn_completions": 1,
+      "candidates": 1,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 8,
+      "dimension": 3
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        15,
+        1,
+        14,
+        12,
+        9,
+        2,
+        24,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1216
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        79,
+        408,
+        1719,
+        3656,
+        4138,
+        0
+      ],
+      "apn_completions": 1216,
+      "candidates": 15,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 11,
+      "dimension": 4
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        15,
+        1,
+        14,
+        12,
+        9,
+        2,
+        24,
+        79,
+        0,
+        0,
+        0,
+        0,
+        432
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        191,
+        813,
+        1646,
+        1719,
+        0
+      ],
+      "apn_completions": 432,
+      "candidates": 15,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 12,
+      "dimension": 4
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        15,
+        1,
+        14,
+        12,
+        9,
+        2,
+        24,
+        79,
+        191,
+        264,
+        236,
+        0,
+        35
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        120,
+        0
+      ],
+      "apn_completions": 35,
+      "candidates": 15,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 15,
+      "dimension": 4
+    },
+    {
+      "affine_checks_by_depth": [
+        1,
+        1,
+        1,
+        15,
+        1,
+        14,
+        12,
+        9,
+        2,
+        24,
+        79,
+        191,
+        264,
+        236,
+        120,
+        16
+      ],
+      "affine_skips_by_depth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "apn_completions": 16,
+      "candidates": 15,
+      "check": "cutoff_candidate_invariance",
+      "cutoff": 16,
+      "dimension": 4
+    }
+  ],
+  "completed": true,
+  "configuration": {
+    "canonicity_cutoff": 11,
+    "control_flow": "recursive",
+    "cutoff_rule": "skip when cutoff <= defined_entries < 2^n; always test complete functions",
+    "dimension": 4,
+    "implementation": "Cython",
+    "normalized": true
+  },
+  "count": {
+    "computed": 15,
+    "matches": false,
+    "reported": 16,
+    "source": "Thesis section 4.2.5; article section 4, printed page 279"
+  },
+  "derivative_checks": 15,
+  "elapsed_seconds": 5.081606166990241,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.12.5",
+    "sage": "10.6",
+    "system": "Darwin"
+  },
+  "finished_utc": "2026-09-19T15:29:27.422729+00:00",
+  "outputs": {
+    "candidate_tables": {
+      "count": 15,
+      "filename": "dimension-4-weak-ea-candidates.txt",
+      "sha256": "0d816091bbdc2c41ffbdf63cfd2958109b8f6f83ce228a2b7230a76e4ad38649"
+    }
+  },
+  "schema": 2,
+  "search": {
+    "accepted": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      9,
+      79,
+      408,
+      1719,
+      3656,
+      4138,
+      15
+    ],
+    "affine_rejected": [
+      0,
+      0,
+      0,
+      14,
+      0,
+      13,
+      11,
+      7,
+      0,
+      15,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1201
+    ],
+    "apn_rejected": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      4,
+      7,
+      0,
+      8,
+      65,
+      856,
+      4809,
+      23848,
+      54358,
+      64992
+    ],
+    "attempted": [
+      1,
+      1,
+      1,
+      16,
+      1,
+      16,
+      16,
+      16,
+      2,
+      32,
+      144,
+      1264,
+      6528,
+      27504,
+      58496,
+      66208
+    ]
+  },
+  "search_seconds": 0.0026251249946653843,
+  "source_sha256": {
+    "cython/affine_search.pyx": "be688e500588c26de1533d97be1a4cccf52ffab213e01cbd929d6c224e3e577f",
+    "lib/affine_canonicity.py": "097fff168e4edfbe6b87dd610a9cb9f6d98b6b9300d5e3532852468c85007689",
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/compiled.py": "22f2cf5a0c55a2b1ef1b573d9d30058116739894028a6e4c1b6afccd16bb9f58",
+    "lib/verify_affine_search.py": "796503a0eff267c50469f0af7d06750ce5cf6144c78789543591a7867e7b3c7b",
+    "sage/ea_candidates.sage": "3b2b10082d85b466467d92e3460905f71e3c1d09ba466a54c45f3587be56ddc2"
+  },
+  "tables_sha256": "d27dd09c99590cd133559110fd18e2ca92d73a9419efb8ab7b4ce081b1eef609",
+  "work": {
+    "affine_checks_by_depth": [
+      1,
+      1,
+      1,
+      15,
+      1,
+      14,
+      12,
+      9,
+      2,
+      24,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1216
+    ],
+    "affine_skips_by_depth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      79,
+      408,
+      1719,
+      3656,
+      4138,
+      0
+    ],
+    "apn_completions": 1216,
+    "candidates": 15,
+    "inner_nodes": 48407,
+    "outer_attempts": 160246
+  }
+}

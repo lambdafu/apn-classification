@@ -1,0 +1,270 @@
+{
+  "artifact": "dimension-five-published-inputs",
+  "completed": true,
+  "elapsed_seconds": 0.06358520800131373,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.12.5",
+    "system": "Darwin"
+  },
+  "finished_utc": "2026-09-20T08:26:21.957914+00:00",
+  "representatives": [
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          527
+        ],
+        [
+          8,
+          496
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          496
+        ],
+        [
+          8,
+          496
+        ]
+      ],
+      "algebraic_degree": 2,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 1,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    },
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          527
+        ],
+        [
+          8,
+          496
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          496
+        ],
+        [
+          8,
+          496
+        ]
+      ],
+      "algebraic_degree": 2,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 2,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    },
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          527
+        ],
+        [
+          8,
+          496
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          496
+        ],
+        [
+          8,
+          496
+        ]
+      ],
+      "algebraic_degree": 3,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 3,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    },
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          527
+        ],
+        [
+          8,
+          496
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          496
+        ],
+        [
+          8,
+          496
+        ]
+      ],
+      "algebraic_degree": 3,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 4,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    },
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          217
+        ],
+        [
+          4,
+          465
+        ],
+        [
+          8,
+          310
+        ],
+        [
+          12,
+          31
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          186
+        ],
+        [
+          4,
+          465
+        ],
+        [
+          8,
+          310
+        ],
+        [
+          12,
+          31
+        ]
+      ],
+      "algebraic_degree": 4,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 5,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    },
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          527
+        ],
+        [
+          8,
+          496
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          496
+        ],
+        [
+          8,
+          496
+        ]
+      ],
+      "algebraic_degree": 3,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 6,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    },
+    {
+      "absolute_walsh_all_output_masks": [
+        [
+          0,
+          527
+        ],
+        [
+          8,
+          496
+        ],
+        [
+          32,
+          1
+        ]
+      ],
+      "absolute_walsh_nonzero_output_masks": [
+        [
+          0,
+          496
+        ],
+        [
+          8,
+          496
+        ]
+      ],
+      "algebraic_degree": 3,
+      "apn_derivatives": true,
+      "apn_planes": true,
+      "id": 7,
+      "matches_printed_multiplicities": true,
+      "normalized": true
+    }
+  ],
+  "schema": 1,
+  "scope": "APN, normalization, degree, and Walsh spectra of supplied tables only; no classification or equivalence search",
+  "source_sha256": {
+    "data/dimension-five.json": "7df9edd1b9384ac2e8bd12a2b1cf144248fafdef75c8591e47cd5a2b11d07ab4",
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/ea_equivalence.py": "f244824559dbad790a1afec8a27f92a38fcc61c5b6487b67eda79fb0de6a01d9",
+    "lib/walsh.py": "8ff457a2999ed650486978f10761171ba63d3ec549820d698e9bb57e16b2e720",
+    "sage/dimension_five_inputs.sage": "2e7876e76cfe4452fca11d8fab25757e59210012b8c03542cabe47a68aa604ae"
+  },
+  "spectrum_convention_discrepancy": {
+    "defined_coefficient_count": 992,
+    "defined_output_masks": "b != 0",
+    "printed_coefficient_count": 1024,
+    "printed_counts_include_zero_output_mask": true,
+    "source": "Article section 5, printed page 280"
+  }
+}

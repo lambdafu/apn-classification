@@ -1,0 +1,18 @@
+# Dimension 4: reconstructed weak EA candidates, in lexicographic order.
+# Computed count: 15. Publications report 16. Historical list not recovered.
+# Each data row is s(0), ..., s(15), as space-separated decimal integers.
+0 0 0 1 0 2 4 7 0 4 6 3 8 14 10 13
+0 0 0 1 0 2 4 7 0 4 6 3 8 14 11 12
+0 0 0 1 0 2 4 7 0 4 6 3 8 15 11 13
+0 0 0 1 0 2 4 7 0 4 6 8 7 10 14 9
+0 0 0 1 0 2 4 7 0 4 6 8 8 14 1 13
+0 0 0 1 0 2 4 7 0 4 6 8 14 3 12 11
+0 0 0 1 0 2 4 7 0 4 7 2 8 14 10 13
+0 0 0 1 0 2 4 7 0 4 7 2 8 14 11 12
+0 0 0 1 0 2 4 7 0 4 7 8 8 14 11 6
+0 0 0 1 0 2 4 7 0 4 8 3 13 11 15 6
+0 0 0 1 0 2 4 7 0 4 8 14 13 8 2 5
+0 0 0 1 0 2 4 7 0 5 6 8 3 14 11 13
+0 0 0 1 0 2 4 7 0 5 6 8 14 9 12 0
+0 0 0 1 0 2 4 7 0 5 8 12 10 13 6 0
+0 0 0 1 0 2 4 7 0 5 8 15 10 14 5 3

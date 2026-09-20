@@ -1,0 +1,24 @@
+{
+  "completed": true,
+  "verified_assignments": 11768,
+  "class_counts": [
+    76,
+    76,
+    2284,
+    2284,
+    2328,
+    2360,
+    2360
+  ],
+  "all_first_candidates_equal_proposed_representatives": true,
+  "record_sha256": "ccde8a51767bf48b53d89074bd3a4508681713b06c44ef70086143603680d1a9",
+  "assignments_sha256": "093708af7b9523524d86a3e4c6f1c541cb29d6b1c0591c66dc228a8e143444ac",
+  "seconds": 0.5726787500025239,
+  "scope": "Independent pointwise positive-certificate replay; exact negative search results checked for presence, not recomputed.",
+  "source_sha256": {
+    "sage/verify_ea_reduction.sage": "14f0d60c660b730a7440090f49bc691b2f21d48a01c182f1a005937a569383d6",
+    "lib/ea_equivalence.py": "7dcf7218aa385786d442c22c6424497f7f4cf2aab1cbae80b064bd848eca0624",
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71"
+  }
+}

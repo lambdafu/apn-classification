@@ -1,0 +1,53 @@
+{
+  "artifact": "affine-refinement",
+  "completed": true,
+  "configuration": {
+    "all_template_transition_dimensions": [
+      1,
+      2
+    ],
+    "max_dimension": 3
+  },
+  "elapsed_seconds": 0.316876750002848,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.12.5",
+    "sage": "10.6",
+    "system": "Darwin"
+  },
+  "finished_utc": "2026-09-19T14:19:00.849216+00:00",
+  "results": [
+    {
+      "affine_maps": 4,
+      "affine_permutations": 2,
+      "basis_reconstructions": 8,
+      "completions_checked": 18,
+      "dimension": 1,
+      "seconds": 0.09019112499663606,
+      "templates_checked": 9,
+      "transitions_checked": 72
+    },
+    {
+      "affine_maps": 64,
+      "affine_permutations": 24,
+      "basis_reconstructions": 128,
+      "completions_checked": 354,
+      "dimension": 2,
+      "seconds": 0.0710835829959251,
+      "templates_checked": 177,
+      "transitions_checked": 5664
+    },
+    {
+      "affine_maps": 4096,
+      "affine_permutations": 1344,
+      "basis_reconstructions": 8192,
+      "dimension": 3,
+      "seconds": 0.15494345800834708
+    }
+  ],
+  "schema": 1,
+  "source_sha256": {
+    "lib/affine_refinement.py": "86067b2e97f3579ac98152d0a3b602bffbc4b5ada592121609c9d55e2f04790f",
+    "sage/affine_refinement.sage": "fdeb8e9bcf6641ceb11ffd29ac58d55497eb6069eeee960aeecfab90a57cc3cc"
+  }
+}

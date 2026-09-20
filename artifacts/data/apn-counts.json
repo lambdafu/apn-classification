@@ -1,0 +1,19 @@
+{
+  "sources": {
+    "apn": "Brinkmann–Leander (2008), Table 4, dimensions 1–3",
+    "permutations_n3": "Brinkmann (2007), Example 4.7, printed p. 33",
+    "permutations_n1_n2": "Direct consequences of Examples 4.2 and 4.4: two bijections in n=1; none is APN in n=2"
+  },
+  "counts": {
+    "1": {"apn": 4, "permutations": 2},
+    "2": {"apn": 192, "permutations": 0},
+    "3": {"apn": 688128, "permutations": 10752}
+  },
+  "discrepancy": {
+    "source": "Thesis Example 4.7, printed p. 33 (PDF page 39)",
+    "printed_apn_n3": 668128,
+    "article_apn_n3": 688128,
+    "note": "The thesis numeral was visually checked in the PDF. Preserve both readings; reproduction determines the count."
+  }
+}
+

@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "weak_ea_candidates": "Thesis section 4.2.5 and article section 4 report 16 candidates in dimension four",
+    "ea_representatives": "Thesis Table 4.4; article Table 2",
+    "permutation_n3": "Thesis Table 4.1; article Theorem 3",
+    "permutations_n4": "Thesis Theorem 4.17; article Theorem 3"
+  },
+  "reported_weak_ea_candidates": 16,
+  "ea_representatives": [
+    [0, 0, 0, 1, 0, 2, 4, 7, 0, 4, 6, 3, 8, 14, 10, 13],
+    [0, 0, 0, 1, 0, 2, 4, 7, 0, 4, 6, 3, 8, 14, 11, 12]
+  ],
+  "ea_degrees": [2, 3],
+  "permutation_n3": [0, 1, 2, 4, 3, 6, 7, 5],
+  "permutations_n4": 0
+}

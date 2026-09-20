@@ -1,0 +1,259 @@
+{
+  "artifact": "apn-counts",
+  "build": {
+    "cython_version": "3.0.11",
+    "extension_sha256": "0c64250f2df3a1de51bf8183f93b00b184cc62a763d823b98a90d1a559df5b24",
+    "loader": "sage.misc.cython.cython_import",
+    "note": "Compiler defaults are Python build configuration, not a captured compiler invocation; source directives also apply.",
+    "python_build_configuration": {
+      "CC": "clang",
+      "CFLAGS": "-fno-strict-overflow -Wsign-compare -Wunreachable-code -DNDEBUG -g -O3 -Wall   -Wno-unused -O2 -mmacosx-version-min=11.0",
+      "LDSHARED": "clang -bundle -undefined dynamic_lookup -L/private/var/tmp/sage-10.6-current/local/lib -L/private/var/tmp/sage-10.6-current/local/lib -Wl,-platform_version,macos,11.0,11.1 -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -L/private/var/tmp/sage-10.6-current/local/lib -L/private/var/tmp/sage-10.6-current/local/var/lib/sage/venv-python3.12.5/lib -L/private/var/tmp/sage-10.6-current/local/lib -L/private/var/tmp/sage-10.6-current/local/lib -Wl,-platform_version,macos,11.0,11.1 -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+    },
+    "source": "cython/apn_counts.pyx",
+    "source_sha256": "36c199b42ab887cad318489bb881ce345f1ede539cf44285eeed5e5d1e244fc6"
+  },
+  "checks": [
+    {
+      "check": "all_functions_three_predicates",
+      "dimension": 1,
+      "functions_checked": 4
+    },
+    {
+      "check": "all_functions_three_predicates",
+      "dimension": 2,
+      "functions_checked": 256
+    }
+  ],
+  "completed": true,
+  "configuration": {
+    "cython_comparison": true,
+    "max_dimension": 3
+  },
+  "elapsed_seconds": 5.9198962499940535,
+  "environment": {
+    "machine": "arm64",
+    "python": "3.12.5",
+    "sage": "10.6",
+    "system": "Darwin"
+  },
+  "finished_utc": "2026-09-19T15:31:55.738446+00:00",
+  "results": [
+    {
+      "cython": {
+        "exhaustive": {
+          "count": 4,
+          "dimension": 1,
+          "method": "exhaustive",
+          "permutations": 2,
+          "seconds_with_output": 3.583001671358943e-06,
+          "tables_sha256": "0fe12ed7a2eb6806814ba347f882ee9e6ed89336d8033001e52ad0d8d629bdd3"
+        },
+        "incremental": {
+          "accepted": [
+            2,
+            4
+          ],
+          "attempted": [
+            2,
+            4
+          ],
+          "count": 4,
+          "dimension": 1,
+          "method": "incremental",
+          "permutations": 2,
+          "rejected": [
+            0,
+            0
+          ],
+          "seconds_with_output": 1.3499986380338669e-05,
+          "tables_sha256": "0fe12ed7a2eb6806814ba347f882ee9e6ed89336d8033001e52ad0d8d629bdd3"
+        }
+      },
+      "dimension": 1,
+      "reference": {
+        "count": 4,
+        "permutations": 2,
+        "tables_sha256": "0fe12ed7a2eb6806814ba347f882ee9e6ed89336d8033001e52ad0d8d629bdd3"
+      },
+      "reference_seconds": 0.0005126670002937317,
+      "search": {
+        "accepted": [
+          2,
+          4
+        ],
+        "attempted": [
+          2,
+          4
+        ],
+        "rejected": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "cython": {
+        "exhaustive": {
+          "count": 192,
+          "dimension": 2,
+          "method": "exhaustive",
+          "permutations": 0,
+          "seconds_with_output": 2.8749986086040735e-05,
+          "tables_sha256": "9628c0f4c2da2da90ec39f516915bcab6f04131ed1269d221b5421c23c813adb"
+        },
+        "incremental": {
+          "accepted": [
+            4,
+            16,
+            64,
+            192
+          ],
+          "attempted": [
+            4,
+            16,
+            64,
+            256
+          ],
+          "count": 192,
+          "dimension": 2,
+          "method": "incremental",
+          "permutations": 0,
+          "rejected": [
+            0,
+            0,
+            0,
+            64
+          ],
+          "seconds_with_output": 2.837499778252095e-05,
+          "tables_sha256": "9628c0f4c2da2da90ec39f516915bcab6f04131ed1269d221b5421c23c813adb"
+        }
+      },
+      "dimension": 2,
+      "reference": {
+        "count": 192,
+        "permutations": 0,
+        "tables_sha256": "9628c0f4c2da2da90ec39f516915bcab6f04131ed1269d221b5421c23c813adb"
+      },
+      "reference_seconds": 0.00042758299969136715,
+      "search": {
+        "accepted": [
+          4,
+          16,
+          64,
+          192
+        ],
+        "attempted": [
+          4,
+          16,
+          64,
+          256
+        ],
+        "rejected": [
+          0,
+          0,
+          0,
+          64
+        ]
+      }
+    },
+    {
+      "cython": {
+        "exhaustive": {
+          "count": 688128,
+          "dimension": 3,
+          "method": "exhaustive",
+          "permutations": 10752,
+          "seconds_with_output": 0.2759239579900168,
+          "tables_sha256": "cebf11deebeed21033e90e4bb7e4c1df2fedf84348055c1d0608f775c5fdade6"
+        },
+        "incremental": {
+          "accepted": [
+            8,
+            64,
+            512,
+            3584,
+            28672,
+            172032,
+            688128,
+            688128
+          ],
+          "attempted": [
+            8,
+            64,
+            512,
+            4096,
+            28672,
+            229376,
+            1376256,
+            5505024
+          ],
+          "count": 688128,
+          "dimension": 3,
+          "method": "incremental",
+          "permutations": 10752,
+          "rejected": [
+            0,
+            0,
+            0,
+            512,
+            0,
+            57344,
+            688128,
+            4816896
+          ],
+          "seconds_with_output": 0.09020733300712891,
+          "tables_sha256": "cebf11deebeed21033e90e4bb7e4c1df2fedf84348055c1d0608f775c5fdade6"
+        }
+      },
+      "dimension": 3,
+      "reference": {
+        "count": 688128,
+        "permutations": 10752,
+        "tables_sha256": "cebf11deebeed21033e90e4bb7e4c1df2fedf84348055c1d0608f775c5fdade6"
+      },
+      "reference_seconds": 1.8813337500032503,
+      "search": {
+        "accepted": [
+          8,
+          64,
+          512,
+          3584,
+          28672,
+          172032,
+          688128,
+          688128
+        ],
+        "attempted": [
+          8,
+          64,
+          512,
+          4096,
+          28672,
+          229376,
+          1376256,
+          5505024
+        ],
+        "rejected": [
+          0,
+          0,
+          0,
+          512,
+          0,
+          57344,
+          688128,
+          4816896
+        ]
+      }
+    }
+  ],
+  "schema": 2,
+  "source_sha256": {
+    "Makefile": "a6b1502e5079b8803050269f3f69462ea397064b45d85cb5d175c2a00cbd72a6",
+    "cython/apn_counts.pyx": "36c199b42ab887cad318489bb881ce345f1ede539cf44285eeed5e5d1e244fc6",
+    "data/apn-counts.json": "d465fd3d360544492da0d456f401a2f32ac060733b479d077c1f2d0de4950a1c",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/compiled.py": "22f2cf5a0c55a2b1ef1b573d9d30058116739894028a6e4c1b6afccd16bb9f58",
+    "sage/apn_counts.sage": "d85963b4dbeeb7b820d4fc1230dbe92d44868d77f836da18344446865b3077ea"
+  }
+}

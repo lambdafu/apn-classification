@@ -1,0 +1,24 @@
+{
+  "artifact": "ccz-standard-pair",
+  "backend": "Sage LinearCode.is_permutation_equivalent (Miller)",
+  "call_cpu_seconds": 83.140038,
+  "call_elapsed_seconds": 83.22932704200502,
+  "code_convention": "row code of columns (1,x,s(x)), LSB-first",
+  "completed": true,
+  "cpu_limit_seconds": 300,
+  "dimension": 5,
+  "equal_absolute_walsh_spectra": true,
+  "equivalent": false,
+  "finished_utc": "2026-09-20T10:01:09.428795+00:00",
+  "pair": [
+    1,
+    2
+  ],
+  "sage_version": "10.6",
+  "source_sha256": {
+    "data/dimension-five.json": "7df9edd1b9384ac2e8bd12a2b1cf144248fafdef75c8591e47cd5a2b11d07ab4",
+    "lib/apn_reference.py": "1431262359a5fc25f45eca57c25a3e3135b42a641d4e2ec3c9354dbe03958e71",
+    "lib/walsh.py": "8ff457a2999ed650486978f10761171ba63d3ec549820d698e9bb57e16b2e720",
+    "sage/ccz_standard_pair.sage": "c69b4b3559dc73c91e9b5aec6ee363df0460cf79541eae7f2cdc5ea3131c8261"
+  }
+}

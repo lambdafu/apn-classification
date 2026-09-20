@@ -1,0 +1,20 @@
+# Track only the maintained reproduction and the author's diploma thesis.
+# Private recovery material and the independent APN Lab project stay local.
+/*
+!/.gitignore
+!/README.md
+!/artifacts/
+
+# Exclude publisher PDFs and other paper copies, wherever they occur.
+*.pdf
+!/Brinkmann - Classification of Almost Perfect Nonlinear Function.pdf
+
+# Generated files; completed evidence belongs in artifacts/results/.
+.DS_Store
+__pycache__/
+*.pyc
+*.sage.py
+*.so
+*.dylib
+*.o
+.venv/
