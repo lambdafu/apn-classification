@@ -22,6 +22,8 @@ Statuses:
   implementation or verification obligation in the current scope.
 - **Discrepancy**: a completed computation differs from a published claim;
   reproducing that claim remains unresolved even if other checks pass.
+- **Corrected in literature**: a published claim has been refuted or corrected
+  by a cited source; this does not assert an independent computational replay.
 
 Entries covering whole sections must be
 expanded into individual formulas, tables, and obligations as work reaches
@@ -116,7 +118,8 @@ question, not an unconditional theorem to prove.
 | EA-CODE-001 | Modern verification, separate from the historical algorithm: EA stabilizer via Aut(C_s) intersect AGL(n,2), assuming rank(M_s)=2n+1. | [Lemma and proof](methods/ccz-stabilizers.md#lemma-ea-stabilizers-as-an-intersection-of-permutation-groups); literature basis: Bracken–Byrne–McGuire–Nebe (2011), §2, Theorem 1 and Lemma 1. | Full-rank bijection and group convention proved; hypotheses checked for all supplied n=4,5 representatives. Not attributed to the 2007 implementation; the separately reconstructed historical Algorithm 3 is EA-GROUP-001 |
 | EA-GROUP-002 | J §6: stabilizer orders 5760,384 in n=4 and 4960,4960,160,160,155,155,155 in n=5. | `sage -python sage/ccz_stabilizers.sage --output build/ccz-stabilizers.json`; [record](results/ccz-stabilizers.json). | Reproduced for all nine supplied representatives; full code groups agree between Miller and Bliss, exact EA intersection orders and generator witnesses verified. The independent recursive reconstruction now returns the same groups and orders under EA-GROUP-001 |
 | TOTAL-001 | J Table 4: APN totals in n=4,5. | Combine complete EA coverage with [computed stabilizers and orbit sizes](methods/ccz-stabilizers.md), [record](results/ccz-stabilizers.json). | n=4 total 18940805775360 reproduced using the completed two-class classification. n=5 total 110823678910407691468800 reproduced by combining the completed EA-002 coverage with the verified seven stabilizers and orbit sizes. The [historical replay](results/historical-stabilizers-verification.json) independently derives the same orbit totals from the backtracking-generated groups |
-| DIM6-001 | J §7, Table 5: fourteen dimension-six representatives and their invariants/equivalences. | Transcribe inputs with source checks; verify APN, degrees, Gamma-ranks, code automorphism information and historical CCZ relationships. Assess canonicity claims separately from inequivalence. | Pending; no exhaustive dimension-six classification is claimed |
+| DIM6-001 | J §7, Table 5: fourteen dimension-six representatives and their invariants/equivalences. | Transcribe inputs with source checks; verify APN, degrees, Gamma-ranks, code automorphism information and historical CCZ relationships. Assess canonicity claims separately from inequivalence; observe [the quadratic-equivalence correction](methods/dimension-six.md). | Pending and deferred; no exhaustive dimension-six classification is claimed. The new class contains no quadratic representative, contrary to the sentence on p. 285; see DIM6-ERRATUM-001 |
+| DIM6-ERRATUM-001 | J §7, p. 285: the assertion that all fourteen classes contain quadratic functions. | [Correction and references](methods/dimension-six.md): Edel–Pott (2009), Theorems 7 and 11 and the explicit identification with Brinkmann–Leander's independently found example. | Corrected in literature: the new class is CCZ-inequivalent to every quadratic function. Published Delta-rank 152 exceeds the bound 128. Source checked 2026-09-21; independent equivalence-witness and rank reproduction remain deferred under DIM6-001 |
 
 ## All functions through dimension four (ePrint 2019/316)
 
@@ -179,6 +182,10 @@ The optional conflict-model and sampling work remains optional.
 - CATALOGUE-004: the 2019 methodology reverses the implication in one sentence.
   EA implies CCZ; the verified grouping and completeness argument use this
   direction, consistent with the introduction.
+- DIM6-ERRATUM-001: the sentence on J p. 285 asserting quadratic
+  representatives in all fourteen classes is false. Edel–Pott (2009) proved
+  that the new class contains none; see [sources and scope](methods/dimension-six.md).
+  Preserve this correction separately from the deferred computational checks.
 - A positive equivalence result requires a checked witness. A negative result
   requires an exact test to finish; a timeout is inconclusive.
 - Class representatives and pairwise inequivalence do not establish search
