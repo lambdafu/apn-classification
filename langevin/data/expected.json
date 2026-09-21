@@ -1,0 +1,18 @@
+{
+  "source": "https://langevin.univ-tln.fr/project/apn-5/apn-5.html",
+  "author": "Philippe Langevin",
+  "experiment_date": "July 2011",
+  "page_last_modified": "March 29, 2012",
+  "retrieved": "2026-09-21",
+  "dimension": 5,
+  "boolean_classes": 48,
+  "selected_boolean_classes": 6,
+  "level2": {"orbit_extensions": 3628, "capacity_survivors": 3537, "ccz_classes": 1782},
+  "level3": {"extensions": 3437013, "capacity_survivors": 1071994, "extendable": 288, "ccz_classes": 7},
+  "level4": {"extensions": 75, "capacity_survivors": 42, "ccz_classes": 4},
+  "level5": {"completions": 5, "ccz_classes": 3},
+  "inputs": {
+    "class-2-5.txt": "https://langevin.univ-tln.fr/project/agl/class-2-5.txt",
+    "sel-1-5.txt": "https://langevin.univ-tln.fr/project/apn-5/maps/sel-1-5.txt"
+  }
+}

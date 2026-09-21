@@ -86,6 +86,9 @@ not been located; the maintained implementation is a documented reconstruction.
 
 - `artifacts/`: maintained source, methods, attributed inputs and completed
   computational evidence, including the final search logs.
+- [`langevin/`](langevin/README.md): independent reproduction of Langevin's
+  2011 component-extension classification in dimension five, with all published
+  intermediate counts and three final CCZ classes reproduced.
 - The diploma thesis PDF.
 
 Build products, Sage-generated Python files, private backup/recovery material,

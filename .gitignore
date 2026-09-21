@@ -1,9 +1,10 @@
-# Track only the maintained reproduction and the author's diploma thesis.
+# Track the maintained reproductions and the author's diploma thesis.
 # Private recovery material and the independent APN Lab project stay local.
 /*
 !/.gitignore
 !/README.md
 !/artifacts/
+!/langevin/
 
 # Exclude publisher PDFs and other paper copies, wherever they occur.
 *.pdf

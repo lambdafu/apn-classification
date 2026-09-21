@@ -1,0 +1,21 @@
+{
+  "completed": true,
+  "checks": {
+    "walsh_cases": 20,
+    "two_component_cases": 33,
+    "last_component_cases": 139,
+    "code_invariance_cases": 20
+  },
+  "seconds": 2.7051272919925395,
+  "build": {
+    "source_sha256": "876adcc5da8cf894211e5b744385b878baa6d24d952ed81d992d1c3ea189e13c",
+    "binary_sha256": "a50a8f3f7cf3f9c77789dafd1bc757e251b39bbb1f8105bcdd78801a63d00929"
+  },
+  "sources": {
+    "sage/check_algorithms.sage": "c0aa4b18539b8f041c08b03f5dd3afb260981c4ecfaf1e024e7101d6313be6fb",
+    "lib/code_equivalence.py": "45368fea2ea3b93bb03441262ed247729a880221b421ced1616716d8af11e38b",
+    "lib/compiled.py": "abd6584f812b3f8c8cd12aae0903bf97300884b9fda696fcd5da9faf949e4f63",
+    "lib/components.py": "45a5c85d78f916496d82e792746e8b0a460cac37f4ffd6dc9fc23f4f5a7768cb",
+    "cython/extensions.pyx": "876adcc5da8cf894211e5b744385b878baa6d24d952ed81d992d1c3ea189e13c"
+  }
+}

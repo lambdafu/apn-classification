@@ -1,0 +1,44 @@
+{
+  "completed": true,
+  "scope": "Replay certificates, coverage arithmetic and recorded stage counts.\n\nDoes not repeat the level-2/3/4 exhaustive extension enumeration or its\nnegative completion decisions. Rerun reproduce.sage for that evidence.\n",
+  "checks": {
+    "boolean_classes": 48,
+    "selected_seeds": 6,
+    "affine_cosets_covered": 67108864,
+    "partial_and_final_code_witnesses": 3872,
+    "completion_witnesses": 288,
+    "ccz_classes_by_level": [
+      1782,
+      7,
+      4,
+      3
+    ],
+    "final_completions": 5,
+    "comparison_with_published_EA_rows": [
+      [
+        1,
+        3,
+        7
+      ],
+      [
+        2,
+        4,
+        6
+      ],
+      [
+        5
+      ]
+    ],
+    "comparison_input_sha256": "7df9edd1b9384ac2e8bd12a2b1cf144248fafdef75c8591e47cd5a2b11d07ab4"
+  },
+  "seconds": 1.7729277919861488,
+  "record_sha256": {
+    "level1.json": "ac2f2b50f43940b931b5250ee9fdd49dddaa2a8a97a89b60d7162871c432f24e",
+    "level2.json": "4f1529b369544a18babdf73783f273ebc3114fd458b1ec0c965222d021de13a1",
+    "level3.json": "cf34b357289cc33808a0dd9f07cfa705dd34f34848051602839c2ffcce980f14",
+    "level4.json": "f8ec0f388bb6837ae715bb3f9565c2fef462ba8d3ff9c65786f014883530298f",
+    "level5.json": "a6f4c3b896d07e24b5db6f15126a2687fcd742f4ce14ca7f690e37fd96212c7a"
+  },
+  "verifier_sha256": "c31b8bb5a1d01fcc23196985a160935f16b328d4681fe4bf88c6a36c24fd59b9",
+  "expected_sha256": "1245b0a6563f32b4d3a690c4d82caba2133e12061d5c578dc03fcbecb08b2534"
+}
