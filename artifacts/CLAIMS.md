@@ -70,7 +70,7 @@ obligations stated explicitly. Cython is optional support for larger computation
 | PLANES-002 | T §3.4, Theorem 3.13 / J §8: extremal bound for arbitrary input subsets. | Reconstruct the saturation and shuffle/sink proof; finite verification is recorded separately as PLANES-003. | General proof reconstruction pending |
 | SEARCH-001 | T §4.1.3, Proposition 4.8 / J §3 and §8: exact affine-plane conflict opportunities. | Use the reproduced A(k) and Delta(k) counts; connect the extremal theorem to left-refinement. | Exact prefix counts reproduced under PLANES-001; general extremal proof remains PLANES-002 |
 | AFFINE-001 | T §4.2.2: affine canonicity algorithms. | `make canonicity`; [method](methods/affine-canonicity.md), [record](results/affine-canonicity.json). | Reconstructed; all prefixes verified against full affine actions through n=2; full-map oracle checks n=4 survivors |
-| AFFINE-002 | T Theorem 4.17, Tables 4.1–4.2 / J Theorem 3, Table 1: APN permutation classification. | `make canonicity` for n=3,4; `make permutations5-from-ea` and `make verify-permutations5` for n=5; [method](methods/apn-permutations-five.md), [record](results/apn-permutations-from-ea-5.json). | Reproduced: one affine class in n=3, none in n=4, five exact published affine minima in n=5. All 67 permutation-producing linear corrections of the seven EA representatives have checked affine witnesses; degrees, five power identifications and inverse relationships verified. Coverage uses completed EA-002, with exact full affine canonicity tests. This reapplies the linear-addition technique the author recalls using in 2019 to the earlier result; the separate direct historical-style permutation-tree run remains ongoing and is not the completion evidence |
+| AFFINE-002 | T Theorem 4.17, Tables 4.1–4.2 / J Theorem 3, Table 1: APN permutation classification. | `make canonicity` for n=3,4; `make permutations5` / `make verify-permutations5-direct` for direct n=5 search; `make permutations5-from-ea` / `make verify-permutations5` for the EA-based route; [method](methods/apn-permutations-five.md), [record](results/apn-permutations-from-ea-5.json). | Reproduced: one affine class in n=3, none in n=4, five exact published affine minima in n=5. All 67 permutation-producing linear corrections of the seven EA representatives have checked affine witnesses; degrees, five power identifications and inverse relationships verified. Coverage uses completed EA-002, with exact full affine canonicity tests. This reapplies the linear-addition technique the author recalls using in 2019 to the earlier result; the direct historical-style permutation-tree search has also completed independently at cutoffs 14 and 16, returning the same five minima with ten checked power/inverse witnesses per run ([direct record](results/apn-permutations-5-cutoff16.json)) |
 | EA-001 | T §4.2.4–4.2.5 / J §4: EA normalization and weak-filter candidates. | `make canonicity` for n=4; `make candidates5` for the compiled n=5 experiment, [method](methods/ea-candidates.md). Publications report 16 and 11768. | n=4 discrepancy: reconstructed filter gives 15. n=5 reproduced: completed search returns exactly 11,768; [record](results/ea-candidates-5.json) |
 | EA-002 | T Theorem 4.20, Tables 4.3–4.5 / J Theorem 5, Tables 2–3: complete EA classification. | `make canonicity` for n=4; `make reduce5 WORKERS=8` and `make verify-reduction5` for n=5. | n=4 class count and exact representatives reproduced. n=5 complete: all 11,768 candidates reduce to the seven exact published representatives, with checked witnesses, 21 completed exact negative tests, and the global-minimum coverage argument; [method](methods/ea-reduction.md), [record](results/ea-reduction-5.json). Power and trace-family correspondences are reproduced separately under POWER-004, POWER-005 and FAMILY-001 |
 | CCZ-001 | T §4.3.1: abandoned direct graph-based CCZ equivalence algorithm and its self-equivalence pruning. | Record the historical transition to Dillon's code-equivalence reduction and Magma. No direct-search reimplementation or small-case runs are required. | Historical context; removed from reconstruction scope by the author on 2026-09-20. Code-based classification remains CCZ-002; EA stabilizer reconstruction remains EA-GROUP-001 |
@@ -145,11 +145,13 @@ Algorithm 3 and Note 9 are now reconstructed under EA-GROUP-001 and
 GROUP-001. The original complete driver remains missing; the new implementation
 and its documented adaptations are not presented as recovered source.
 
-AFFINE-002 is now complete using the independently documented correction
-search over the seven exhaustive EA classes. Its separate direct permutation
-search remains running for comparison; it is not required by that coverage
-argument. CATALOGUE-001 through CATALOGUE-004 complete the finite computational
-tables of the additional 2019 paper.
+AFFINE-002 is complete by two routes: the correction search over the seven
+exhaustive EA classes, and the separate direct permutation search. Direct runs
+at cutoffs 14 and 16 have both completed; their records, progress logs and
+certificate replays were preserved on 21 September 2026. Both return the same
+five published affine minima without relying on EA enumeration. CATALOGUE-001
+through CATALOGUE-004 complete the finite computational tables of the additional
+2019 paper.
 
 At the author's request, the following remain **open and deferred**:
 

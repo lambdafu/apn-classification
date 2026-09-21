@@ -2,7 +2,7 @@ SAGE = sage
 WORKERS = 1
 CUTOFF =
 
-.PHONY: all reproduce reference planes refinement canonicity candidates5 reduce5 verify-reduction5 powers verify-powers historical-stabilizers verify-historical-stabilizers permutations5 permutations5-from-ea verify-permutations5 catalogue2019 verify-catalogue2019
+.PHONY: all reproduce reference planes refinement canonicity candidates5 reduce5 verify-reduction5 powers verify-powers historical-stabilizers verify-historical-stabilizers permutations5 permutations5-from-ea verify-permutations5 verify-permutations5-direct catalogue2019 verify-catalogue2019
 all: reproduce
 
 reproduce:
@@ -46,6 +46,10 @@ permutations5:
 
 verify-permutations5:
 	$(SAGE) -python sage/verify_extended_results.sage --record results/apn-permutations-from-ea-5.json --output build/apn-permutations-from-ea-5-verification.json
+
+verify-permutations5-direct:
+	$(SAGE) -python sage/verify_extended_results.sage --record results/apn-permutations-5-cutoff14.json --output build/apn-permutations-5-cutoff14-verification.json
+	$(SAGE) -python sage/verify_extended_results.sage --record results/apn-permutations-5-cutoff16.json --output build/apn-permutations-5-cutoff16-verification.json
 
 permutations5-from-ea:
 	$(SAGE) -python sage/permutations_from_ea.sage --output build/apn-permutations-from-ea-5.json

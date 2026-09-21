@@ -1,0 +1,12 @@
+{
+  "completed": true,
+  "artifact": "apn-permutations-replay",
+  "record_sha256": "7a775258ebbf23ba6cbdbe239c8a71a23330e377dde281854650c326f08b1515",
+  "verifier_sha256": "cbf19ae14b73408edf4774cc803c1dea3e96e0ebcc8aac42f3d3db247fe93c11",
+  "checks": {
+    "representatives": 5,
+    "affine_witnesses": 10
+  },
+  "seconds": 0.0020047920115757734,
+  "scope": "Source hashes, positive witnesses, table properties and arithmetic; exhaustive searches and negative decisions are not repeated."
+}

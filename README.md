@@ -53,6 +53,7 @@ make reproduce             # Small-dimensional exhaustive baseline
 make canonicity            # Dimension-four affine and EA classification
 make permutations5-from-ea # Five n=5 affine APN permutation classes using complete EA coverage
 make verify-permutations5  # Replay permutation, power and inverse witnesses
+make verify-permutations5-direct # Replay the two completed direct n=5 searches
 make reduce5 WORKERS=8      # Reduce the saved 11,768 dimension-five candidates
 make verify-reduction5     # Replay all saved dimension-five EA witnesses
 make historical-stabilizers # Algorithm 3 and Note 9, n=4,5

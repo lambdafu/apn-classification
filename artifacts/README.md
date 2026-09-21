@@ -34,7 +34,8 @@ make refinement   # Affine templates checked against Sage matrix enumeration
 make canonicity   # Nested affine/EA searches; dimension-four classification
 make permutations5-from-ea # Five affine APN permutation classes from complete EA coverage
 make verify-permutations5 # Replay 67 correction assignments and 10 power/inverse witnesses
-make permutations5 # Separate direct permutation-tree search (potentially long)
+make permutations5 # Direct permutation-tree search; completed records at cutoffs 14 and 16
+make verify-permutations5-direct # Replay both saved direct-search records
 make candidates5  # Compiled dimension-five weak EA search; potentially long
 make reduce5 WORKERS=8  # Exact reduction of the saved 11,768 candidates
 make verify-reduction5 # Replay every saved EA assignment certificate

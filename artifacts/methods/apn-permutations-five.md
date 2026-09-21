@@ -109,10 +109,44 @@ Unpropagated and propagated runs through n=4 agree with the immutable search.
 Use `--reference --dimension 3` or `4`, without the cutoff option, for a small
 readable run. The n=5 reference is exposed but may be slow.
 
-The direct n=5 run was still ongoing when the EA-based classification completed.
-No completed direct-tree record is claimed or used as evidence. Exploratory
-runs without a cutoff and with cutoffs 20 and 12 were interrupted. The separate
-cutoff-16 run was left running, with progress in
-`build/apn-permutations-5-cutoff16.log`; a successful finish writes
-`build/apn-permutations-5-cutoff16.json`. Build output is not retained evidence
-until inspected and explicitly saved. Stopping and resumption remain deferred.
+Two direct n=5 runs have now completed and were preserved on 21 September 2026.
+Both exhaust the search and return the same five exact published affine minima,
+independently of the completed EA classification used by the correction route.
+Both also pass the runner's small-dimensional reference comparisons and ten
+power/inverse witness checks.
+
+| Cutoff | Recorded search seconds | Outer attempts | Affine nodes | APN permutation completions | Rejected by final affine test | Representatives |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 14 | 25615.522 | 44478637955 | 193807286 | 784 | 779 | 5 |
+| 16 | 4967.236 | 7921345840 | 2753368016 | 224 | 219 | 5 |
+
+These are elapsed search times from the two runs, not CPU timings or a
+controlled performance comparison. Both records identify Sage 10.6, Python
+3.12.5 and macOS arm64, with propagation enabled and EA normalization disabled.
+The recorded completion times are 21 September 2026 at 05:56:19 UTC for cutoff
+14 and 20 September 2026 at 22:34:21 UTC for cutoff 16.
+
+- Cutoff 14: [record](../results/apn-permutations-5-cutoff14.json),
+  [progress log](../results/apn-permutations-5-cutoff14.log),
+  [certificate replay](../results/apn-permutations-5-cutoff14-verification.json).
+  Copied unchanged from the author's `build/my-apn-permutations-5.json` and
+  matching `.log`; the record establishes that this run used cutoff 14.
+- Cutoff 16: [record](../results/apn-permutations-5-cutoff16.json),
+  [progress log](../results/apn-permutations-5-cutoff16.log),
+  [certificate replay](../results/apn-permutations-5-cutoff16-verification.json).
+  Copied unchanged from `build/apn-permutations-5-cutoff16.json` and matching `.log`.
+
+Both table digests are
+`b7b407614a1520e6659dc1ef9b1a6e02fed9fff8af3b3b25ce77a12c28e46638`.
+The tables also agree exactly with the independent linear-correction result.
+The saved records retain source hashes, work counters and witnesses. Replay
+checks those source hashes, the published tables, APN and permutation
+properties, degrees and ten affine witnesses; it does not repeat the tree
+exhaustion. Run both replays with:
+
+```sh
+make verify-permutations5-direct
+```
+
+Exploratory runs without a cutoff and with cutoffs 20 and 12 were interrupted
+and are not completion evidence. Stopping and resumption remain deferred.
